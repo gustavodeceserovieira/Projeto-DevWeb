@@ -5,10 +5,11 @@ import express from 'express'
 const app= express();
 app.use(express.json());
 
-app.get('/get_alunos', async (req, res) => {
-  const resposta = await get_alunos()
-  res.json(resposta)
+app.get('/editarAluno', async (req, res) => {
+  res.render("editaAluno")
 });
+
+/*
 app.get('/get_alunos/:rg', async (req, res) => {
   const rg = req.params.rg
   const resposta = await get_alunos_rg(rg)
@@ -17,6 +18,8 @@ app.get('/get_alunos/:rg', async (req, res) => {
     }
     res.json(resposta)
 });
+*/
+
 app.get('/get_alunos_rg/:nome', async (req, res) => {
   const nome = req.params.nome  
   const resposta = await get_rg(nome)

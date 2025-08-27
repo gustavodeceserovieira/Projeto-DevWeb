@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/telaLogin.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <div class="form">
+        <form method="post" action="/login" class="form-group">
+            <label for="nome">Nome de usuário*</label>
+            <input id="nome" type="text" name="nome" class="form-control" placeholder="Usuário" maxlength="100" autocomplete="off" required="true" />
+            <label for="senha">Senha*</label>
+            <input id="senha" type="password" name="password" class="form-control" placeholder="Senha"  minlength="4" maxlength="6" autocomplete="off" required="true" />
+            <!--<p id="erro">{{msg}}</p>-->
+            <button type="submit" class="btn btn-primary mt-3">Login</button>
+            <p id="info">Campos com asterisco são obrigatórios</p>
+        </form>
+    </div>
+</body>
+</html>

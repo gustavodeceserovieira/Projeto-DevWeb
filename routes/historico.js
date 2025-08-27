@@ -4,9 +4,12 @@ import express from 'express'
 const app= express();
 app.use(express.json());
 
-app.get('/get_historico_pagamento', async (req, res) => {
-  const resposta = await get_historico_pagamento()
-  res.json(resposta)
+app.get('/HistoricoPresenca', async (req, res) => {
+  res.render('HistoricoPresenca')
+});
+
+app.get('/HistoricoPagamento', async (req, res) => {
+  res.render('historicoPagamento')
 });
 
 export default app;

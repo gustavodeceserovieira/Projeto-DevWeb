@@ -1,11 +1,10 @@
 import express from 'express'
 
-
 const app= express();
 app.use(express.json());
 
-app.get('/mensalidade', async (req, res) => {
-  res.render('mensalidade')
+app.get('/cadastro', async (req, res) => {
+  res.render('cadastro')
 });
 
 export default app;

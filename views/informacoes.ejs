@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/telaInformacoes.css">
+    <script src="../static/js/informacoes.js" defer></script>
+    <title>Informações</title>
+</head>
+
+<body>
+    <div class="title">
+        <nav class="subtitle">
+            <a href="/logout" class="btn btn-link">Logoff</a>
+            {% if usuario["Usuario"] %}
+                <a class="btn btn-link" href="/telaAjustes">Configurações</a>
+                <a href="/cadastro" class="btn btn-link">Cadastrar aluno</a>
+                <a class="btn btn-link" href="/Presenca">Registrar presença</a>
+                <a class="btn btn-link" href="/mensalidade">Pagar mensalidade</a>
+            {% endif %}
+            <a class="btn btn-link" href="/HistoricoPresenca">Histórico de presença</a>
+            <a class="btn btn-link" href="/HistoricoPagamento">Histórico de pagamento</a>
+            <!--
+            <a class="btn btn-link" href="/HistoricoFaltas">Histórico de Faltas</a>
+            <a class="btn btn-link" href="/InformacoesMensalidade">Controle da mensalidade</a>
+            -->
+        </nav>
+    </div>
+    <h1>Informações dos alunos</h1>
+    <input type="text" id="pesquisa" placeholder="Filtrar por nome do aluno" />
+    <table class="table" id="table" class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>RG</th>
+                <th>Nome completo</th>
+                <th>Categoria</th>
+                <th>Responsável</th>
+                <th>Telefone responsável</th>
+                <th>Data de nascimento</th>
+                <th>Frequência(%)</th>
+                <th>Faltas</th>
+                <th>Mensalidade</th>
+                <th>Data de cadastro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--
+            <tr>
+                {% for elementos, responsaveis, alunos in data %}
+            <tr>
+                <td>{{elementos[0]}}</td>
+                <td>{{elementos[1]}}</td>
+                <td>{{alunos[0]}}</td>
+                <td>{{responsaveis[1]}}</td>
+                <td>{{responsaveis[2]}}</td>
+                <td>{{elementos[2] | formata_data_nascimento}}</td>
+                <td>{{elementos[3]}}</td>
+                <td>{{elementos[4]}}</td>
+                <td td class="status">{{elementos[5]}}</td>
+                <td>{{elementos[6] | formata_data_cadastro}}</td>
+            </tr>
+            {% endfor %}
+            </tr>
+            -->
+        </tbody>
+    </table>
+</body>
+
+</html>

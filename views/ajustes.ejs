@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/telaAjustes.css">
+    <title>Ajustes</title>
+</head>
+
+<body>
+    <div class="title">
+        <nav class="subtitle">
+            <a href="/logout" class="btn btn-link">Logoff</a>
+            <a href="/criar_usuario" class="btn btn-link">Criar usuário</a>
+            <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
+        </nav>
+    </div>
+    <h1>Ajustes</h1>
+    <div class="form">
+        <form method="post" action="/ajustes" class="form-group" id="form">
+            <label>Quantidade de aulas*</label>
+            <input type="number" name="qtdaulas" class="form-control" min="0" id="aulas" value="{{data['aulas']}}" autocomplete="off" required="true"><br>
+            <label>Mensalidade*</label>
+            <input type="text" name="valorMensalidade" class="form-control" id="mensalidade" value="{{data['mensalidade']}}" autocomplete="off"required="true"><br>
+            <label>Dia para o fechamento do mês*</label>
+            <input type="number" min="1" max="31" name="pagamento" id="dia" value="{{data['fechamento']}}" class="form-control" autocomplete="off" required="true">
+            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+            <p id="info">Campos com asterisco são obrigatórios</p>
+        </form>
+    </div>
+</body>
+<script>
+    document.getElementById("form").addEventListener("change", function() {
+    let selectedOption = this.options[this.selectedIndex];
+    document.getElementById("aulas").value
+    document.getElementById("mensalidade").value
+    document.getElementById("dia").value
+});
+</script>
+</html>
