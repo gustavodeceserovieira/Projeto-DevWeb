@@ -10,9 +10,11 @@ import routesInfo from './routes/informacoes.js';
 import routesCadastro from './routes/cadastro.js'
 import routesPresenca from './routes/presenca.js'
 import routesMensalidade from './routes/mensalidade.js'
+import routesUsuario from './routes/usuarios.js'
 dotenv.config()
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(routesAjustes)
 app.use(routesAlunos)
 app.use(routesHistorico)
@@ -23,6 +25,7 @@ app.use(routesInfo)
 app.use(routesCadastro)
 app.use(routesPresenca)
 app.use(routesMensalidade)
+app.use(routesUsuario)
 
 app.set('views', './views')
 app.set('view engine', 'ejs')

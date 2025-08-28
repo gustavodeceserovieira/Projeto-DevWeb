@@ -5,9 +5,7 @@ const app= express();
 app.use(express.json());
 
 app.get('/logout', async (req, res) => {
-  res.redirect('/')
+  return res.render('login',{msg:''})
 });
 
 export default app;
-
-

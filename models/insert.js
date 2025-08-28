@@ -10,8 +10,8 @@ export async function salva_dados_resp(dados,rg_aluno) {
   const [rows] = await db.execute('INSERT INTO responsaveis (nome, telefone,rg_aluno) VALUES (?,?,?)',[dados['Resp'], dados['Tel'],rg_aluno])
   return rows
 }
-export async function cria_usuario(dados){
-  const [rows] = await db.execute('INSERT INTO usuario(nome,senha) VALUES(?,?)',[dados['nome'],dados['senha']]);
+export async function cria_usuario(usuario,senha){
+  const [rows] = await db.execute('INSERT INTO usuario(nome,senha) VALUES(?,?)',[usuario,senha]);
   return rows
 }
 export async function insere_ajustes(){

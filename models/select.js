@@ -1,8 +1,8 @@
 import db from '../bd/bd.js'
 
 export default async function get_ajustes() {
-  const [rows] = await db.execute('SELECT * FROM ajustes');
-  return rows;
+  const [row] = await db.execute('SELECT * FROM ajustes');
+  return row.length;
 }
 export async function get_alunos() {
   const [rows] = await db.execute('SELECT * FROM aluno order by rg_aluno asc');
@@ -30,7 +30,10 @@ export async function get_responsaveis_rg(rg) {
 }
 export async function login(){
   const [rows] = await db.execute('SELECT * FROM usuario');
-  return rows
+  return {
+    'quantidade':rows.length,
+    'usuarios':rows
+  }
 }
 export async function retorna_presenca(){
   const [rows] = await db.execute('SELECT * FROM presenca order by data_presenca desc');

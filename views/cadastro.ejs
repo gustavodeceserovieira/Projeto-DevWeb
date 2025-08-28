@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/telaCadastro.css">
-    <script src="../static/js/cadastro.js" defer></script>
+    <script src="/js/cadastro.js" defer></script>
     <title>Cadastro</title>
 </head>
 
@@ -36,11 +36,9 @@
                  autocomplete="on" required="true" minlength="0" maxlength="15"><br>
             <label>Selecione a categoria</label>
             <select name="categoria" id="selectAluno">
-                <!--
-                {% for categorias in data['Categorias'] %}
-                    <option>{{categorias[0]}} - {{categorias[1]}}</option>
-                {% endfor %}
-                -->
+                <% data.forEach(function(categoria) { %>
+                    <option><%= categoria.nome_categoria %></option>
+                <% }); %>
             </select><br>
             <label>Data de nascimento*</label>
             <input type="date" max="9999-12-31" name="data" class="form-control" required="true" /></br>
