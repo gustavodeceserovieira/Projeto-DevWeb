@@ -33,7 +33,7 @@
             <tr>
                 <td><%= alunos.rg_aluno %></td>
                 <td><%= alunos.nome %></td>
-                <td><%= alunos.data_presenca %></td>
+                <td><%= alunos.data_presenca.toLocaleDateString('pt-br') %></td>
             </tr>
             <% }); %>
         </tbody>
