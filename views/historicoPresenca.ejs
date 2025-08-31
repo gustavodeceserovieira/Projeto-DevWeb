@@ -29,18 +29,13 @@
             </tr>
         </thead>
         <tbody>
-            <!--
+            <% data.forEach(function(alunos) { %>
             <tr>
-                {% for elementos in data['Alunos'] %}
-            <tr>
-
-                <td>{{elementos[3]}}</td>
-                <td>{{elementos[1]}}</td>
-                <td>{{elementos[2] | formata_data_pagamento}}</td>
+                <td><%= alunos.rg_aluno %></td>
+                <td><%= alunos.nome %></td>
+                <td><%= alunos.data_presenca %></td>
             </tr>
-            {% endfor %}
-            </tr>
-        -->
+            <% }); %>
         </tbody>
     </table>
 </body>

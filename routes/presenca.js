@@ -15,30 +15,27 @@ app.post('/editaPresenca', async (req, res) => {
   let alunos_ausentes = []
   let alunos_presentes = []
   const presencas = {} 
-  for (const key in req.body.data_presenca) {
-    if (key.startsWith("presenca")) {
-      const index = key.split("[")[1].slice(0, -1);
-      presencas[index] = req.body[key];
-    }
+  for (const key in req.body.presenca) {
+    presencas[key] = req.body.presenca[key];
   }
   const data_presenca = req.body.data_presenca
   const alunosCategoria = await retorna_alunos_por_categoria(req.body.categorias)
   for (const alunos of alunosCategoria) {
-    const presente = alunos in presencas
+    const presente = alunos['rg_aluno'] in presencas
     const dados = {
-      'Rg':alunos['rg_aluno'],
       'Nome':alunos['nome'],
       'Data':data_presenca,
+      'Rg':alunos['rg_aluno'],
     }
     if(presente){
       alunos_presentes.push(dados)
       await insere_presenca(dados)
     }else{
-      alunos_ausentes.push(dados)
-    }    
-    console.log(dados)       
+      alunos_ausentes.push(dados)    
+    }
   }
   for (const alunosAusentes of alunos_ausentes) {
+    console.log(alunosAusentes)
     const rg = alunosAusentes['Rg']
     const getAlunos = await get_alunos_rg(rg)
     const ajustes = await get_ajustes()
@@ -54,7 +51,7 @@ app.post('/editaPresenca', async (req, res) => {
       }
       await atualiza_presenca(dados) 
     }
-    return res.redirect("mostraInformacoes")
   }
+  return res.redirect("mostraInformacoes")
 });
 export default app;

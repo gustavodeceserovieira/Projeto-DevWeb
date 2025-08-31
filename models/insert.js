@@ -24,6 +24,7 @@ export async function insere_historico(rg,dados,data){
   return rows
 }
 export async function insere_presenca(dados){
+  console.log(dados['Nome'])
   const[rows] = await db.execute('INSERT INTO presenca(nome, data_presenca,rg_aluno) VALUES(?,?,?)',[dados['Nome'],dados['Data'],dados['Rg']])
   return rows
 }  
