@@ -1,7 +1,5 @@
-import { render } from 'ejs';
 import { cria_usuario} from '../models/insert.js';
 import { login} from '../models/select.js';
-import {get_responsaveis, get_responsaveis_rg } from '../models/select.js'
 import express from 'express'
 
 const app= express();

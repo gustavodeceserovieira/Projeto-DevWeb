@@ -1,6 +1,5 @@
 import express from 'express'
 import get_ajustes, {login} from '../models/select.js'
-import Controllerlogin from '../controllers/controllerLogin.js';
 
 const app= express();
 app.use(express.json());
@@ -8,7 +7,7 @@ app.use(express.json());
 app.get('/', async (req, res) => {
     const usuariosCadastrados = await login()
     if(usuariosCadastrados['quantidade'] == 0){
-      return res.render('criaUsuario')
+      return res.render('criaUsuario',{msg:""})
     }
     return res.render('login',{msg:""})
 
@@ -21,7 +20,7 @@ app.post('/login', async (req, res) => {
   const dadosUsuariobanco = await login();
   const ajustes = await get_ajustes();
   for (const element of dadosUsuariobanco['usuarios']) {
-    if(ajustes == 0){
+    if(ajustes['qtd'] == 0){
       return res.redirect('TelaAjustes')
     }
     if(element['nome'] == dadosUsuario['usuario'] && element['senha'] == dadosUsuario['senha']){

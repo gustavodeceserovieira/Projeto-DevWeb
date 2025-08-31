@@ -2,10 +2,20 @@ import db from '../bd/bd.js'
 
 export default async function get_ajustes() {
   const [row] = await db.execute('SELECT * FROM ajustes');
-  return row.length;
+  if(row.length == 0){
+      return {
+      'qtd':row.length,
+    }
+  }
+  return{
+    'qtd':row.length,
+    'aulas':row[0]['quantidade_aulas']
+  }
+  
 }
 export async function get_alunos() {
   const [rows] = await db.execute('SELECT * FROM aluno order by rg_aluno asc');
+  console.log(rows)
   return rows
 }
 export async function get_alunos_rg(rg) {
@@ -60,3 +70,7 @@ export async function retorna_categorias_dos_alunos(){
   return rows
 }
   
+export async function get_categoria(nome) {
+  const [rows] = await db.execute('SELECT id FROM categorias where nome_categoria=?',[nome]);
+  return rows[0]['id']
+}

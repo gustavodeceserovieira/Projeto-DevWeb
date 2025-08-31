@@ -6,15 +6,15 @@ export async function salva_dados_alunos(dados){
   );
   return rows
 }
-export async function salva_dados_resp(dados,rg_aluno) {
-  const [rows] = await db.execute('INSERT INTO responsaveis (nome, telefone,rg_aluno) VALUES (?,?,?)',[dados['Resp'], dados['Tel'],rg_aluno])
+export async function salva_dados_resp(dados) {
+  const [rows] = await db.execute('INSERT INTO responsaveis (nome, telefone,rg_aluno) VALUES (?,?,?)',[dados['Resp'], dados['Tel'],dados['Rg']])
   return rows
 }
 export async function cria_usuario(usuario,senha){
   const [rows] = await db.execute('INSERT INTO usuario(nome,senha) VALUES(?,?)',[usuario,senha]);
   return rows
 }
-export async function insere_ajustes(){
+export async function insere_ajustes(qtdAulas,valorMensalidade,viradaMes){
   const [rows] = await db.execute('INSERT INTO ajustes (quantidade_aulas, valor_mensalidade,data_virada_mes) VALUES (?,?,?)',[qtdAulas,valorMensalidade,viradaMes])
   return rows
 }

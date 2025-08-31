@@ -21,7 +21,7 @@
     </div>
     <h1>Cadastro do aluno</h1>
     <div class="form">
-        <form method="post" action="/informacoes" class="form-group">
+        <form method="post" action="/cadastraInformacoes" class="form-group">
             <label>Nome completo*</label>
             <input type="text" name="nome" class="form-control" placeholder="Nome completo do aluno" maxlength="100"
                 autocomplete="off" required="true"><br>
@@ -42,7 +42,7 @@
             </select><br>
             <label>Data de nascimento*</label>
             <input type="date" max="9999-12-31" name="data" class="form-control" required="true" /></br>
-            <p id="erro">{{msg}}</p>
+            <p id="erro"><%= msg %></p>
             <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
             <p id="info">Campos com asterisco são obrigatórios</p>
         </form>

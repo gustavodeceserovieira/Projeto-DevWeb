@@ -24,16 +24,9 @@
         <form action="/editaAluno" method="post" class="form-group">
             <label>Aluno</label>
             <select name="rg" id="selectAluno">
-                <!--
-                {% for aluno in data['Alunos'] %}
-                    <option value="{{aluno[0]}}" 
-                            data-rg="{{aluno[0]}}" 
-                            data-nome="{{aluno[1] }}" 
-                            data-data="{{aluno[2]}}">
-                        {{ aluno[0] }} - {{ aluno[1] }}
-                    </option>
-                {% endfor %}
-                -->
+                <% data.forEach(function(aluno) { %>
+                    <option><%= aluno.rg_aluno + " " + aluno.nome %></option>
+                <% }); %>
             </select><br>
             <div id="atualiza" style="display: block;">
                 <label>Editar RG*</label>
@@ -44,11 +37,9 @@
                     maxlength="100" autocomplete="off"><br>
                 <label>Selecione a categoria</label>
                 <select name="categoria" id="selectAluno">
-                    <!--
-                    {% for aluno in data['Categoria'] %}
-                        <option>{{aluno[0]}} - {{aluno[1]}}</option>
-                    {% endfor %}
-                    -->
+                    <% data1.forEach(function(categoria) { %>
+                        <option><%= categoria.nome_categoria %></option>
+                    <% }); %>
                 </select><br>
                 <label>Data de nascimento*</label>
                 <input type="date" max="9999-12-31" name="data" id="data_nascimento" class="form-control"/><br>

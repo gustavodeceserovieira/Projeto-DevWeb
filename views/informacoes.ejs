@@ -47,24 +47,22 @@
             </tr>
         </thead>
         <tbody>
-            <!--
             <tr>
-                {% for elementos, responsaveis, alunos in data %}
+                <% data.forEach(item => { %>
             <tr>
-                <td>{{elementos[0]}}</td>
-                <td>{{elementos[1]}}</td>
-                <td>{{alunos[0]}}</td>
-                <td>{{responsaveis[1]}}</td>
-                <td>{{responsaveis[2]}}</td>
-                <td>{{elementos[2] | formata_data_nascimento}}</td>
-                <td>{{elementos[3]}}</td>
-                <td>{{elementos[4]}}</td>
-                <td td class="status">{{elementos[5]}}</td>
-                <td>{{elementos[6] | formata_data_cadastro}}</td>
+                <td><%= item.elementos.rg_aluno %></td>
+                <td><%= item.elementos.nome %></td>
+                 <td><%= item.categorias.nome_categoria %></td>
+                <td><%= item.responsaveis.nome %></td>
+                <td><%= item.responsaveis.telefone %></td>
+                <td><%= item.elementos.data_nascimento %></td>
+                <td><%= item.elementos.frequencia %></td>
+                <td><%= item.elementos.faltas %></td>
+                <td td class="status"><%= item.elementos.mensalidade %></td>
+                <td><%= item.elementos.data_cadastro %></td>
             </tr>
-            {% endfor %}
+            <% }); %>
             </tr>
-            -->
         </tbody>
     </table>
 </body>
