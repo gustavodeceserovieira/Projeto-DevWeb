@@ -1,4 +1,4 @@
-import { get_alunos,get_alunos_rg, get_categoria, retorna_categorias } from '../models/select.js'
+import { get_alunos,get_alunos_rg, get_categoria, retorna_alunos_por_categoria, retorna_categorias } from '../models/select.js'
 import {deleta_aluno,deleta_presenca_aluno,deleta_responsaveis_aluno,deleta_aluno_historico} from '../models/delete.js'
 import { atualiza_dados, atualiza_historico } from '../models/update.js';
 import express from 'express'
@@ -39,6 +39,18 @@ app.post('/editaAluno', async (req, res) => {
   }
   
 });
+
+app.get('/get_alunos/:categoria_id', async (req, res) => {
+  const categoria = req.params.categoria_id
+  const alunos = await retorna_alunos_por_categoria(categoria)
+  res.json(
+    alunos.map(aluno => ({
+      rg: aluno['rg_aluno'],
+      nome: aluno['nome']
+    })));
+});
+
+
 /*
 app.get('/get_alunos/:rg', async (req, res) => {
   const rg = req.params.rg
