@@ -15,7 +15,6 @@ export default async function get_ajustes() {
 }
 export async function get_alunos() {
   const [rows] = await db.execute('SELECT * FROM aluno order by rg_aluno asc');
-  console.log(rows)
   return rows
 }
 export async function get_alunos_rg(rg) {

@@ -1,9 +1,9 @@
 import db from '../bd/bd.js'
 
 
-export async function atualiza_dados(rg_novo,dados,rg){
+export async function atualiza_dados(dados,rg){
   const[rows] = await db.execute('UPDATE aluno SET rg_aluno=?, nome=?, data_nascimento=?, id_categoria=? WHERE rg_aluno=?',
-    [rg_novo,dados['Data_nascimento'],dados['Id_categoria'],rg])
+    [dados['Rg'],dados['Nome'],dados['Data_nascimento'],dados['Id_categoria'],rg])
   return rows
 }
 export async function zera_faltas(){

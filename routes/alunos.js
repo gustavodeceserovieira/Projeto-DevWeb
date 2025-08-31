@@ -1,4 +1,6 @@
 import { get_alunos,get_alunos_rg, get_categoria, retorna_categorias } from '../models/select.js'
+import {deleta_aluno,deleta_presenca_aluno,deleta_responsaveis_aluno,deleta_aluno_historico} from '../models/delete.js'
+import { atualiza_dados, atualiza_historico } from '../models/update.js';
 import express from 'express'
 
 
@@ -12,33 +14,31 @@ app.get('/editarAluno', async (req, res) => {
 });
 
 app.post('/editaAluno', async (req, res) => {
+  let rgAntigo = req.body.rg.split(" ")[0]
+  let alunosRg = await get_alunos_rg(rgAntigo)
+  if(req.body.on){
+    for (const alunos of alunosRg ) {
+      await deleta_presenca_aluno(alunos['rg_aluno'])
+      await deleta_aluno_historico(alunos['rg_aluno'])
+      await deleta_responsaveis_aluno(alunos['rg_aluno'])
+      await deleta_aluno(alunos['rg_aluno'])
+    }
+    return res.redirect('mostraInformacoes')
+  }else{
+  const dados = {
+    'Rg':req.body.rg.split(" ")[0],
+    'Nome': req.body.nome_atualizado,
+    'Data_nascimento':req.body.data,
+    'Id_categoria':await get_categoria(req.body.categoria)
+  }
+  await atualiza_dados(dados,rgAntigo)
+  for (const alunos of alunosRg) {
+    await atualiza_historico(dados['Nome'],req.body.rg_atualizado,alunos['rg_aluno'])
+  }
   return res.redirect('mostraInformacoes')
+  }
+  
 });
-
-/*
-
-try:
-        if(request.form.get("on")):
-            for alunos in bd.pega_alunos_por_rg(request.form.get('rg').split(" - ")[0]):
-                bd.deleta_aluno_presenca(alunos[0])
-                bd.deleta_aluno_historico(alunos[0])
-                bd.deleta_aluno_responsaveis(alunos[0])
-                bd.deleta_aluno(alunos[0])
-            return redirect(url_for("mostra_informacoes"))
-        else:
-            dados = {
-                'Rg':request.form.get('rg'),
-                'Nome': request.form['nome_atualizado'],
-                'Data_nascimento':request.form['data'],
-                'Id_categoria':request.form.get("categoria").split(" - ")[0]
-            }
-            bd.atualiza_dados(request.form['rg_atualizado'],dados,request.form.get('rg').split(" - ")[0])
-            for alunos in bd.pega_alunos_por_rg(dados['Rg']):
-                bd.atualiza_historico(dados['Nome'],request.form['rg_atualizado'],alunos[0])
-            return redirect(url_for("mostra_informacoes"))
-    except:
-        return redirect(url_for("mostra_informacoes"))
-*/
 /*
 app.get('/get_alunos/:rg', async (req, res) => {
   const rg = req.params.rg
