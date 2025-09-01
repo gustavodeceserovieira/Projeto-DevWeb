@@ -2,6 +2,7 @@ import { get_alunos,get_alunos_rg, get_categoria, retorna_alunos_por_categoria, 
 import {deleta_aluno,deleta_presenca_aluno,deleta_responsaveis_aluno,deleta_aluno_historico} from '../models/delete.js'
 import { atualiza_dados, atualiza_historico } from '../models/update.js';
 
+
 export async function telaEditaAluno(req,res) {
   const alunos = await get_alunos()
   const categorias = await retorna_categorias()

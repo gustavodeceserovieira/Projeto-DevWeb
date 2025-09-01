@@ -8,13 +8,21 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+
+function formatDateToJS(data){
+    const [dia, mes, ano] = data.split("/");
+    return `${ano}-${mes}-${dia}`;
+}
+
 function atualiza_campos() {
     const select = document.getElementById("selectAluno");
     let selectedOption = select.options[select.selectedIndex];
     if (selectedOption) {
-        document.getElementById("rg_atualizado").value = selectedOption.getAttribute("data-rg") || "";
         document.getElementById("nome_atualizado").value = selectedOption.getAttribute("data-nome") || "";
-        document.getElementById("data_nascimento").value = selectedOption.getAttribute("data-data") || "";
+        let valor = selectedOption.getAttribute("data-data") || "" 
+        console.log(valor)
+        document.getElementById("data_nascimento").value = formatDateToJS(valor)
     }
 }
 document.getElementById("selectAluno").addEventListener("change", atualiza_campos);

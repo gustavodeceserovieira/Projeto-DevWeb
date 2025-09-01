@@ -9,7 +9,9 @@ export default async function get_ajustes() {
   }
   return{
     'qtd':row.length,
-    'aulas':row[0]['quantidade_aulas']
+    'aulas':row[0]['quantidade_aulas'],
+    'mensalidade':row[0]['valor_mensalidade'],
+    'data_virada':row[0]['data_virada_mes'],
   }
   
 }
@@ -35,7 +37,7 @@ export async function get_responsaveis() {
 }
 export async function get_responsaveis_rg(rg) {
   const [rows] = await db.execute('SELECT nome, telefone FROM responsaveis WHERE rg_aluno=? order by rg_aluno asc',[rg]);
-  return rows
+  return rows[0]
 }
 export async function login(){
   const [rows] = await db.execute('SELECT * FROM usuario');

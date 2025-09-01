@@ -1,13 +1,9 @@
-import {get_responsaveis, get_responsaveis_rg } from '../models/select.js'
+import { editaResponsavel, telaResponsaveis } from '../controllers/controllerResponsaveis.js';
 import express from 'express'
 
-const app= express();
-app.use(express.json());
+const router = express();
 
-
-app.get('/EditarResponsavel', async (req, res) => {
-  res.render('editaResponsavel')
-});
-
-export default app;
+router.get('/EditarResponsavel', telaResponsaveis)
+router.post('/editaResponsavel', editaResponsavel)
+export default router;
 

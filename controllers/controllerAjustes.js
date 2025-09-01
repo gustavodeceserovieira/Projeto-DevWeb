@@ -27,5 +27,20 @@ export async function ajustes(req,res){
     }
 }
 export async function TelaAjustes(req,res){
-    return res.render('ajustes')
+    const ajustes = await get_ajustes()
+    if(ajustes['qtd'] == 0){
+        const dados = {
+            'aulas':0,
+            'mensalidade':0,
+            'fechamento':0,
+        }
+        return res.render_template("ajustes", {data:dados})
+    }else{
+        const dados = {
+            'aulas': ajustes['aulas'],
+            'mensalidade': ajustes['mensalidade'],
+            'fechamento': ajustes['data_virada']
+        }
+        return res.render("ajustes", {data:dados})
+    }
 }

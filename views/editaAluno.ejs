@@ -25,7 +25,9 @@
             <label>Aluno</label>
             <select name="rg" id="selectAluno">
                 <% data.forEach(function(aluno) { %>
-                    <option><%= aluno.rg_aluno + " " + aluno.nome %></option>
+                    <option value="<%= aluno.rg_aluno %>" 
+                        data-nome="<%= aluno.nome %>" 
+                        data-data="<%= aluno.data_nascimento.toLocaleDateString('pt-br') %>"><%= aluno.rg_aluno + " " + aluno.nome %></option>
                 <% }); %>
             </select><br>
             <div id="atualiza" style="display: block;">

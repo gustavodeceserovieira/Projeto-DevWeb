@@ -10,8 +10,6 @@ document.getElementById("selectAluno").addEventListener("change", atualiza_campo
 document.addEventListener("DOMContentLoaded", atualiza_campos);
 
 
-
-
 function valida_telefone(){
     document.getElementById('telefone').addEventListener('input', function (e) {
         let num = e.target.value.replace(/\D/g, '');

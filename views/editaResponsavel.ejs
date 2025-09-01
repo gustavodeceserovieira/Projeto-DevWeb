@@ -23,15 +23,11 @@
         <form action="/editaResponsavel" method="post" class="form-group">
             <label>Aluno</label>
             <select name="rg" id="selectAluno">
-                <!--
-                    {% for aluno, resp in data %}
-                        <option value="{{aluno[0]}}" 
-                            nome="{{resp[0][0]}}" 
-                            telefone="{{resp[0][1] }}">
-                            {{ aluno[0] }} - {{ aluno[1] }}
-                        </option>
-                    {% endfor %}
-                    -->
+                <% data.forEach(item => { %>
+                    <option value="<%= item.alunos.rg_aluno %>" 
+                        nome="<%= item.responsaveisAlunos.nome %>" 
+                        telefone="<%= item.responsaveisAlunos.telefone %>"><%= item.alunos.rg_aluno + " " + item.alunos.nome %></option>
+                <% }); %>
             </select><br>
             <div id="atualiza" style="display: block;">
                 <label>Nome do responsável*</label>

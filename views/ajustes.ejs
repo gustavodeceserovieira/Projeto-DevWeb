@@ -22,11 +22,11 @@
     <div class="form">
         <form method="post" action="/ajustes" class="form-group" id="form">
             <label>Quantidade de aulas*</label>
-            <input type="number" name="qtdAulas" class="form-control" min="0" id="qtdAulas" value="{{data['aulas']}}" autocomplete="off" required="true"><br>
+            <input type="number" name="qtdAulas" class="form-control" min="0" id="qtdAulas" value="<%= data.aulas %>" autocomplete="off" required="true"><br>
             <label>Mensalidade*</label>
-            <input type="text" name="valorMensalidade" class="form-control" id="mensalidade" value="{{data['mensalidade']}}" autocomplete="off"required="true"><br>
+            <input type="text" name="valorMensalidade" class="form-control" id="mensalidade" value="<%= data.mensalidade %>" autocomplete="off"required="true"><br>
             <label>Dia para o fechamento do mês*</label>
-            <input type="number" min="1" max="31" name="pagamento" id="dia" value="{{data['fechamento']}}" class="form-control" autocomplete="off" required="true">
+            <input type="number" min="1" max="31" name="pagamento" id="dia" value="<%= data.fechamento %>" class="form-control" autocomplete="off" required="true">
             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
             <p id="info">Campos com asterisco são obrigatórios</p>
         </form>
