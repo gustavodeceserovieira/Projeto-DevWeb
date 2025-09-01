@@ -1,11 +1,11 @@
 import express from 'express'
+import { editaMensalidade, telaMensalidade } from '../controllers/controllerMensalidade.js';
 
 
-const app= express();
-app.use(express.json());
+const router = express();
+router.use(express.json());
 
-app.get('/mensalidade', async (req, res) => {
-  res.render('mensalidade')
-});
+router.get('/mensalidade',telaMensalidade)
+router.post('/editaMensalidade',editaMensalidade)
 
-export default app;
+export default router;

@@ -1,4 +1,4 @@
-import get_ajustes, { get_alunos, get_alunos_rg, retorna_categorias } from '../models/select.js'
+import get_ajustes, { get_alunos, get_alunos_rg, retorna_categorias ,retorna_presenca } from '../models/select.js'
 import {retorna_alunos_por_categoria } from '../models/select.js'
 import { insere_presenca } from '../models/insert.js';
 import { atualiza_presenca } from '../models/update.js';
@@ -49,4 +49,10 @@ export async function registraPresenca(req,res){
 export async function TelaPresenca(req,res) {
   const categorias = await retorna_categorias()
   res.render('presenca',{data:categorias})
+}
+
+export async function historicoPresenca(req,res) {
+  const alunos = await retorna_presenca()
+  return res.render('HistoricoPresenca',{data:alunos})
+  
 }

@@ -21,7 +21,7 @@ export async function get_alunos_rg(rg) {
   const [rows] = await db.execute('SELECT * FROM aluno WHERE rg_aluno=? order by nome asc',[rg]);
   return rows
 }
-export async function get_historico_pagamento() {
+export async function retorna_historico_pagamento() {
   const [rows] = await db.execute('SELECT * FROM historico_pagamento order by data_pagamento desc');
   return rows
 }

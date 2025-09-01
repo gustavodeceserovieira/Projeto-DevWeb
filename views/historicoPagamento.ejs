@@ -29,18 +29,13 @@
             </tr>
         </thead>
         <tbody>
-            <!--
+            <% data.forEach(function(alunos) { %>
             <tr>
-                {% for elementos in data['Alunos'] %}
-            <tr>
-
-                <td>{{elementos[1]}}</td>
-                <td>{{elementos[2]}}</td>
-                <td>{{elementos[3]| formata_data_pagamento}}</td>
+                <td><%= alunos.rg_aluno %></td>
+                <td><%= alunos.nome_aluno %></td>
+                <td><%= alunos.data_pagamento.toLocaleDateString('pt-br') %></td>
             </tr>
-            {% endfor %}
-            </tr>
-            -->
+            <% }); %>
         </tbody>
     </table>
 </body>

@@ -1,16 +1,10 @@
-import { get_historico_pagamento, retorna_presenca } from '../models/select.js'
+import telaHistoricoPagamento from '../controllers/controllerPagamento.js';
+import { historicoPresenca } from '../controllers/controllerPresenca.js';
 import express from 'express'
 
-const app= express();
-app.use(express.json());
+const router = express();
 
-app.get('/HistoricoPresenca', async (req, res) => {
-  const alunos = await retorna_presenca()
-  res.render('HistoricoPresenca',{data:alunos})
-});
+router.get('/HistoricoPresenca', historicoPresenca)
+router.get('/HistoricoPagamento', telaHistoricoPagamento)
 
-app.get('/HistoricoPagamento', async (req, res) => {
-  res.render('historicoPagamento')
-});
-
-export default app;
+export default router;
