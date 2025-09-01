@@ -5,10 +5,14 @@ function atualiza_campos() {
         document.getElementById("nome_atualizado").value = selectedOption.getAttribute("nome") || "";
         document.getElementById("telefone").value = selectedOption.getAttribute("telefone") || "";
     }
+    if(select.value == ''){
+        let form = document.getElementById("form")
+        const msg = form.innerHTML = "Não há alunos cadastrados!"
+        form.style.display = select.value == '' ? msg : "block"
+    } 
 }
 document.getElementById("selectAluno").addEventListener("change", atualiza_campos);
 document.addEventListener("DOMContentLoaded", atualiza_campos);
-
 
 function valida_telefone(){
     document.getElementById('telefone').addEventListener('input', function (e) {

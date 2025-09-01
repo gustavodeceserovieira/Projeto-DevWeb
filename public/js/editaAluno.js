@@ -24,6 +24,11 @@ function atualiza_campos() {
         console.log(valor)
         document.getElementById("data_nascimento").value = formatDateToJS(valor)
     }
+    if(select.value == ''){
+        let form = document.getElementById("form")
+        const msg = form.innerHTML = "Não há alunos a serem atualizados!"
+        form.style.display = select.value == '' ? msg : "block"
+    } 
 }
 document.getElementById("selectAluno").addEventListener("change", atualiza_campos);
 document.addEventListener("DOMContentLoaded", atualiza_campos);
