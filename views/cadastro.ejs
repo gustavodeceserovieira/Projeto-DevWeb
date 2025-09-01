@@ -40,11 +40,15 @@
                 <% }); %>
             </select><br>
             <label>Data de nascimento*</label>
-            <input type="date" max="9999-12-31" name="data" class="form-control" required="true" /></br>
+            <input type="date" min="2000-12-31" max="" name="data" id="data" class="form-control" required="true" /></br>
             <p id="erro"><%= msg %></p>
             <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
             <p id="info">Campos com asterisco são obrigatórios</p>
         </form>
     </div>
 </body>
+<script>
+    let data = new Date().toISOString().split("T")[0];
+    document.getElementById("data").setAttribute("max",data);
+</script>
 </html>

@@ -1,7 +1,6 @@
 import get_ajustes, {get_alunos, get_categoria, retorna_categorias} from '../models/select.js';
 import { salva_dados_alunos , salva_dados_resp} from '../models/insert.js';
 
-
 export async function telaCadastro(req,res) {
     const categorias = await retorna_categorias()
     return res.render('cadastro',{data:categorias,msg:""})
