@@ -15,12 +15,13 @@
     <div class="title">
         <nav class="subtitle">
             <a href="/logout" class="btn btn-link">Logoff</a>
-            {% if usuario["Usuario"] %}
+            <!--{% if usuario["Usuario"] %}-->
                 <a class="btn btn-link" href="/telaAjustes">Configurações</a>
                 <a href="/cadastro" class="btn btn-link">Cadastrar aluno</a>
+                <a href="/editarAluno" class="btn btn-link">Editar aluno</a>
                 <a class="btn btn-link" href="/Presenca">Registrar presença</a>
                 <a class="btn btn-link" href="/mensalidade">Pagar mensalidade</a>
-            {% endif %}
+            <!--{% endif %}-->
             <a class="btn btn-link" href="/HistoricoPresenca">Histórico de presença</a>
             <a class="btn btn-link" href="/HistoricoPagamento">Histórico de pagamento</a>
         </nav>
