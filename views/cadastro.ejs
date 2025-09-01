@@ -32,11 +32,11 @@
                 autocomplete="off" required="true"><br>
             <label>Telefone do Responsável*</label>
             <input type="tel" name="tel" id="telefone" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" class="form-control" placeholder="(xx) xxxxx-xxxx"
-                 autocomplete="on" required="true" minlength="0" maxlength="15"><br>
+                 autocomplete="on" required="true" minlength="0" maxlength="15"/><br>
             <label>Selecione a categoria</label>
             <select name="categoria" id="selectAluno">
                 <% data.forEach(function(categoria) { %>
-                    <option><%= categoria.nome_categoria %></option>
+                    <option id="categoria"><%= categoria.nome_categoria %></option>
                 <% }); %>
             </select><br>
             <label>Data de nascimento*</label>
@@ -47,8 +47,4 @@
         </form>
     </div>
 </body>
-<script>
-    let data = new Date().toISOString().split("T")[0];
-    document.getElementById("data").setAttribute("max",data);
-</script>
 </html>
