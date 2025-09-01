@@ -7,3 +7,5 @@ router.post("/editaPresenca", registraPresenca)
 router.get('/Presenca',TelaPresenca)
 
 export default router;
+
+

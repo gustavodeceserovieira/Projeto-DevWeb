@@ -2,8 +2,8 @@ import db from '../bd/bd.js'
 
 
 export async function atualiza_dados(dados,rg){
-  const[rows] = await db.execute('UPDATE aluno SET rg_aluno=?, nome=?, data_nascimento=?, id_categoria=? WHERE rg_aluno=?',
-    [dados['Rg'],dados['Nome'],dados['Data_nascimento'],dados['Id_categoria'],rg])
+  const[rows] = await db.execute('UPDATE aluno SET nome=?, data_nascimento=?, id_categoria=? WHERE rg_aluno=?',
+    [dados['Nome'],dados['Data_nascimento'],dados['Id_categoria'],rg])
   return rows
 }
 export async function zera_faltas(){
@@ -37,7 +37,7 @@ export async function atualiza_presenca(dados){
   const[rows] = await db.execute('UPDATE aluno SET frequencia=?, faltas=? WHERE rg_aluno=?',[dados['Frequencia'],dados['Faltas'],dados['Rg']])
   return rows
 }
-export async function atualiza_historico(nome,rg_novo,rg_antigo){
-  const[rows] = await db.execute('UPDATE historico_pagamento SET nome_aluno=?, rg_aluno=? WHERE rg_aluno=?',[nome,rg_novo,rg_antigo])
+export async function atualiza_historico(nome,rg_antigo){
+  const[rows] = await db.execute('UPDATE historico_pagamento SET nome_aluno=? WHERE rg_aluno=?',[nome,rg_antigo])
   return rows
 }

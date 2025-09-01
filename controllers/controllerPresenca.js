@@ -2,10 +2,6 @@ import get_ajustes, { get_alunos, get_alunos_rg, retorna_categorias } from '../m
 import {retorna_alunos_por_categoria } from '../models/select.js'
 import { insere_presenca } from '../models/insert.js';
 import { atualiza_presenca } from '../models/update.js';
-import express from 'express'
-
-const app = express();
-app.use(express.json());
 
 export async function registraPresenca(req,res){
   let alunos_ausentes = []

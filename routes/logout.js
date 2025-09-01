@@ -1,11 +1,7 @@
 import express from 'express'
+import { logout } from '../controllers/controllerLogout.js';
 
 
-const app= express();
-app.use(express.json());
-
-app.get('/logout', async (req, res) => {
-  return res.render('login',{msg:''})
-});
-
-export default app;
+const router = express();
+router.get('/logout',logout)
+export default router;
