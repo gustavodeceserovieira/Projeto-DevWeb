@@ -34,7 +34,7 @@ export async function TelaAjustes(req,res){
             'mensalidade':0,
             'fechamento':0,
         }
-        return res.render_template("ajustes", {data:dados})
+        return res.render("ajustes", {data:dados})
     }else{
         const dados = {
             'aulas': ajustes['aulas'],
