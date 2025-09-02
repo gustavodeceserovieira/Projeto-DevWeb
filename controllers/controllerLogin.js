@@ -1,5 +1,6 @@
 import get_ajustes, {login} from '../models/select.js'
 
+
 export async function home(req,res) {
     const usuariosCadastrados = await login()
     if(usuariosCadastrados['quantidade'] == 0){
@@ -8,7 +9,11 @@ export async function home(req,res) {
     return res.render('login',{msg:""})
 }
 
+
 export async function fazlogin(req,res) {
+    //Quando faz login cria a sessão
+    req.session.sessionId = Math.random().toString(36).substring(2,15);//Cria um id aleatório para a sessão
+    req.session.nome = req.body.nome;
     const dadosUsuario = {
         'usuario':req.body.nome,
         'senha': req.body.password
@@ -24,5 +29,4 @@ export async function fazlogin(req,res) {
         }
     } 
     return res.render('login',{msg:"Usuário ou senha inválidos"})
-    //Adicionar sessão
 }

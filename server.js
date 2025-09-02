@@ -11,10 +11,32 @@ import routesCadastro from './routes/cadastro.js'
 import routesPresenca from './routes/presenca.js'
 import routesMensalidade from './routes/mensalidade.js'
 import routesUsuario from './routes/usuarios.js'
+import session from 'express-session'
+import path from 'path'
 dotenv.config()
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: process.env.KEY,  
+    resave: false,                  
+    saveUninitialized: true,      
+    cookie: { maxAge: 300000 }  //Tempo de sessão de 5 minutos
+    
+    
+}));
+
+app.use((req, res, next) => {
+  const publicPaths = ['/','/login'];
+  if (!req.session.nome && !publicPaths.includes(req.path) && !req.path.startsWith("/css") && !req.path.startsWith("/js")) {
+    return res.redirect("/");
+  }
+  next();
+});
+        
+
+
 app.use(routesAjustes)
 app.use(routesAlunos)
 app.use(routesHistorico)
@@ -26,6 +48,7 @@ app.use(routesCadastro)
 app.use(routesPresenca)
 app.use(routesMensalidade)
 app.use(routesUsuario)
+
 
 app.set('views', './views')
 app.set('view engine', 'ejs')
