@@ -21,7 +21,7 @@
     <div class="form">
         <form method="post" action="/editaPresenca" class="form-group">
             <label>Data da aula</label>
-            <input type="date" name="data_presenca" id="data_presenca" min="" max=""><br>
+            <input type="date" name="data_presenca" id="data_presenca" min="2025-01-01" max=""><br>
             <label>Categoria</label>
             <select name="categorias" id="categoria-select">
                 <option value="">Selecione uma categoria</option>
@@ -37,7 +37,6 @@
 <script>
     const dataAtual = new Date().toISOString().split("T")[0];
     const input = document.getElementById("data_presenca");
-    input.setAttribute("min",dataAtual)
     input.setAttribute("max",dataAtual) 
     input.value = dataAtual 
 </script>

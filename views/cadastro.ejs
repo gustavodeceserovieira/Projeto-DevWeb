@@ -20,28 +20,27 @@
     </div>
     <h1>Cadastro do aluno</h1>
     <div class="form">
-        <form method="post" action="/cadastraInformacoes" class="form-group">
+        <form method="post" action="/cadastraInformacoes" class="form-group" id="formulario">
             <label>Nome completo*</label>
             <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome completo do aluno" maxlength="100"
                 autocomplete="off" required="true"><br>
             <label>RG*</label>
-            <input type="text" name="rg" id="rg" class="form-control" placeholder="RG" maxlength="10"
+            <input type="text" name="rg" id="rg" class="form-control" placeholder="RG" minlength="11" maxlength="11"
                 autocomplete="off" required="true"><br>
             <label>Responsável*</label>
-            <input type="text" name="resp" class="form-control" placeholder="Nome do responsável" maxlength="100"
+            <input type="text" name="resp" class="form-control" id="resp" placeholder="Nome do responsável" maxlength="100"
                 autocomplete="off" required="true"><br>
             <label>Telefone do Responsável*</label>
             <input type="tel" name="tel" id="telefone" class="form-control" placeholder="(xx) xxxxx-xxxx"
                  autocomplete="on" required="true" minlength="0" maxlength="15"/><br>
-            <label>Selecione a categoria</label>
+            <label>Selecione a categoria*</label>
             <select name="categoria" id="selectAluno">
                 <% data.forEach(function(categoria) { %>
-                    <option id="categoria"><%= categoria.nome_categoria %></option>
+                    <option><%= categoria.nome_categoria %></option>
                 <% }); %>
             </select><br>
             <label>Data de nascimento*</label>
             <input type="date" min="2012-01-01" e max="2018-12-31" name="data" id="data" class="form-control" required="true" /></br>
-            <p id="erro"><%= msg1 %></p>
             <p id="erro"><%= msg %></p>
             <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
             <p id="info">Campos com asterisco são obrigatórios</p>
@@ -49,19 +48,55 @@
     </div>
 </body>
 <script>
+        IMask(
+        document.getElementById('rg'),
+    {
+        mask: Number,
+    },
     IMask(
-    document.getElementById('rg'),
-  {
-    mask: Number,
-  },
-  IMask(
-  document.getElementById('telefone'),
-  {
-    mask: '(00)00000-0000'
-  },
-  IMask(
-  document.getElementById('nome'),{
-    mask: /^[\p{L} '-]*$/u 
-  })))
+    document.getElementById('telefone'),
+    {
+        mask: '(00)00000-0000'
+    },
+    IMask(
+    document.getElementById('nome'),{
+        mask: /^[\p{L} '-]*$/u 
+    },
+    IMask(
+    document.getElementById('resp'),{
+        mask: /^[\p{L} '-]*$/u 
+    }
+    ))));
+    
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+        const dataAtual = document.getElementById("data").value
+        const dataCategoria = new Date().toISOString().split("T")[0];
+        const categoria = document.getElementById("selectAluno").value.trim().toUpperCase();
+        const d1 = new Date(dataAtual)
+        const d2 = new Date(dataCategoria)
+        let idade = d2.getFullYear() - d1.getFullYear();
+        const mes = d2.getMonth() - d1.getMonth();
+        if (mes < 0 || (mes === 0 && d2.getDate() < d1.getDate())) {
+            idade--;
+        }
+        if(categoria === "SUB 7" && !(idade >= 6 && idade <=7) ){
+            event.preventDefault();
+            return alert("Data inválida para a categoria SUB 7")  
+        }
+        if(categoria === "SUB 9" && !(idade >= 8 && idade < 10)){
+            event.preventDefault();
+            return alert("Data inválida para a categoria SUB 9")
+           
+        }
+        if(categoria === "SUB 11" && !(idade >= 10 && idade <=11)){
+            event.preventDefault();
+           return alert("Data inválida para a categoria SUB 11")
+           
+        }
+        if(categoria === "SUB 13" && !(idade >= 12 && idade <=13)){
+            event.preventDefault();
+            return alert("Data inválida para a categoria SUB 13")   
+        }
+    });
 </script>
 </html>

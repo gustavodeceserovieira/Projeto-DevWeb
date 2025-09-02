@@ -1,4 +1,3 @@
-
 import {retorna_categorias} from '../models/select.js'
 /*
 def virouMes():
@@ -17,7 +16,7 @@ def zeraFaltas():
     return
     */
 
-
+/*
 export default async function validaData(req,res) {
     const categorias = await retorna_categorias()
     const dataAtual = req.body.data
@@ -44,3 +43,4 @@ export default async function validaData(req,res) {
     }
     //Ajustar as mensagens
 }
+*/
