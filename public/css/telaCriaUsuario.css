@@ -45,7 +45,7 @@ body {
 
 .form {
     padding: 3rem;
-    max-width: 600px;
+    max-width: 90%;
     max-height: 90%;
     margin: 3rem auto;
     background: #ffffff;
@@ -78,11 +78,4 @@ button:hover {
 }
 #erro {
     color: red;
-}
-#info{
-    color:black;
-    font-size: small;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight:bold;
-    margin-top: 5%;
 }

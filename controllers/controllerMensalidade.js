@@ -12,15 +12,15 @@ export async function editaMensalidade(req,res) {
     if(req.body.on){
         const [rg, ...array] = req.body.rg.split(" ");
         const dados = {
-            'Rg': rg,
-            'Nome': array.join(" "),
+            'Rg': rg.trim(),
+            'Nome': array.join(" ").trim(),
             'Mensalidade': 1,
         }
         await atualiza_mensalidade(dados)
         await insere_historico(dados['Rg'],dados,data)
     }else{
         const dados = {
-            'Rg': req.body.rg.split(" ")[0],
+            'Rg': req.body.rg.split(" ")[0].trim(),
             'Mensalidade':0,
         }
         await atualiza_mensalidade(dados)

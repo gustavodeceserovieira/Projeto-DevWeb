@@ -3,9 +3,9 @@ import { atualiza_ajustes,atualiza_frequencia } from '../models/update.js';
 import { insere_ajustes } from '../models/insert.js';
 
 export async function ajustes(req,res){
-    let qtdaulas = parseInt(req.body.qtdAulas)
-    let mensalidade = parseFloat(req.body.valorMensalidade.replace(",","."))
-    let viradaMes = req.body.pagamento
+    let qtdaulas = parseInt(req.body.qtdAulas.trim())
+    let mensalidade = parseFloat(req.body.valorMensalidade.replace(",",".").trim())
+    let viradaMes = req.body.pagamento.trim()
     const ajustes = await get_ajustes()
     const dadosBanco = await get_alunos()
     if(ajustes['qtd'] == 0){

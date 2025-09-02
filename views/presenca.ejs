@@ -10,34 +10,45 @@
     <script src="/js/presenca.js" defer></script>
     <title>Registra presença</title>
 </head>
+
 <body>
-    <div class="title">
-        <nav class="subtitle">
-            <a href="/logout" class="btn btn-link">Logoff</a>
-            <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
-        </nav>
-    </div>
-    <h1>Registro de Presença</h1>
-    <div class="form">
-        <form method="post" action="/editaPresenca" class="form-group">
-            <label>Data da aula</label>
-            <input type="date" name="data_presenca" id="data_presenca" min="2025-01-01" max=""><br>
-            <label>Categoria</label>
-            <select name="categorias" id="categoria-select">
-                <option value="">Selecione uma categoria</option>
-                <% data.forEach(function(categoria) { %>
-                    <option value="<%= categoria.id %>"><%= categoria.nome_categoria %></option>
-                <% }); %>
-            </select><br>
-            <div id="alunos-container"></div>
-            <button type="submit" id="submit-btn" style="display:none;">Confirmar</button>
-        </form>
-    </div>
+    <header>
+        <div class="title">
+            <nav class="subtitle">
+                <a href="/logout" class="btn btn-link">Logoff</a>
+                <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Registro de Presença</h1>
+        <section class="editaPresenca">
+            <div class="form">
+                <form method="post" action="/editaPresenca" class="form-group">
+                    <label>Data da aula</label>
+                    <input type="date" name="data_presenca" id="data_presenca" min="2025-01-01" max=""><br>
+                    <label>Categoria</label>
+                    <select name="categorias" id="categoria-select" required>
+                        <option value="">Categoria</option>
+                        <% data.forEach(function(categoria) { %>
+                            <option value="<%= categoria.id %>">
+                                <%= categoria.nome_categoria %>
+                            </option>
+                            <% }); %>
+                    </select><br>
+                    <div id="alunos-container"></div>
+                    <button type="submit" id="submit-btn" style="display:none;">Confirmar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
 </body>
 <script>
     const dataAtual = new Date().toISOString().split("T")[0];
     const input = document.getElementById("data_presenca");
-    input.setAttribute("max",dataAtual) 
+    input.setAttribute("max", dataAtual)
     input.value = dataAtual 
 </script>
+
 </html>

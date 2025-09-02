@@ -12,18 +12,24 @@
 </head>
 
 <body>
-    <h1>Login</h1>
-    <div class="form">
-        <form method="post" action="/login" class="form-group">
-            <label for="nome">Nome de usuário*</label>
-            <input id="nome" type="text" name="nome" class="form-control" placeholder="Usuário" maxlength="100" autocomplete="off" required="true" />
-            <label for="senha">Senha*</label>
-            <input id="senha" type="password" name="password" class="form-control" placeholder="Senha"  minlength="4" maxlength="6" autocomplete="off" required="true" />
-            <p id="erro"><%= msg %></p>
-            <button type="submit" class="btn btn-primary mt-3">Login</button>
-            <p id="info">Campos com asterisco são obrigatórios</p>
-        </form>
-    </div>
+    <main>
+        <h1>Login</h1>
+        <section class="formulario-login">
+            <div class="form">
+                <form method="post" action="/login" class="form-group">
+                    <label for="nome">Nome de usuário*</label>
+                    <input id="nome" type="text" name="nome" class="form-control" placeholder="Usuário" maxlength="100" autocomplete="off" required="true" />
+                    <label for="senha">Senha*</label>
+                    <input id="senha" type="password" name="password" class="form-control" placeholder="Senha"  minlength="4" maxlength="6" autocomplete="off" required="true" />
+                    <p id="erro"><%= msg %></p>
+                    <button type="submit" class="btn btn-primary mt-3">Login</button>
+                </form>
+            </div>
+        </section>
+        <section class="footer">
+            <footer>© 2025 Feito por Gustavo de Cesero Vieira. Todos os direitos reservados. </footer>
+        </section>
+    </main>
 </body>
 <script>
     IMask(

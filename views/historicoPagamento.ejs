@@ -12,32 +12,44 @@
 </head>
 
 <body>
-    <div class="title">
-        <nav class="subtitle">
-            <a href="/logout" class="btn btn-link">Logoff</a>
-            <a class="btn btn-link" href="/mostraInformacoes">Informações dos alunos</a>
-        </nav>
-    </div>
-    <h1>Histórico de pagamento</h1>
-    <input type="text" id="pesquisa" placeholder="Filtrar por data" />
-    <table class="table" id="table" class="table table-striped table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>RG do aluno</th>
-                <th>Nome do aluno</th>
-                <th>Data do Pagamento</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% data.forEach(function(alunos) { %>
-            <tr>
-                <td><%= alunos.rg_aluno %></td>
-                <td><%= alunos.nome_aluno %></td>
-                <td><%= alunos.data_pagamento.toLocaleDateString('pt-br') %></td>
-            </tr>
-            <% }); %>
-        </tbody>
-    </table>
+    <header>
+        <div class="title">
+            <nav class="subtitle">
+                <a href="/logout" class="btn btn-link">Logoff</a>
+                <a class="btn btn-link" href="/mostraInformacoes">Informações dos alunos</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Histórico de pagamento</h1>
+        <input type="text" id="pesquisa" placeholder="Filtrar por data" />
+        <section class="tabela-historico">
+            <table class="table" id="table" class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>RG do aluno</th>
+                        <th>Nome do aluno</th>
+                        <th>Data do Pagamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(alunos) { %>
+                        <tr>
+                            <td>
+                                <%= alunos.rg_aluno %>
+                            </td>
+                            <td>
+                                <%= alunos.nome_aluno %>
+                            </td>
+                            <td>
+                                <%= alunos.data_pagamento.toLocaleDateString('pt-br') %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </section>
+    </main>
 </body>
 
 </html>

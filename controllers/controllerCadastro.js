@@ -14,16 +14,16 @@ export async function cadastraAluno(req,res) {
     const ajustes = await get_ajustes()
     let frequencia = 100 - (nro_faltas/ajustes['aulas']) * 100
     const dados = {
-        'Rg': req.body.rg,
-        'Nome':req.body.nome,
-        'Resp': req.body.resp,
-        'Tel':req.body.tel,
-        'Data_nascimento': new Date(req.body.data),
+        'Rg': req.body.rg.trim(),
+        'Nome':req.body.nome.trim(),
+        'Resp': req.body.resp.trim(),
+        'Tel':req.body.tel.trim(),
+        'Data_nascimento': new Date(req.body.data.trim()),
         'Frequencia': frequencia,
         'Faltas': nro_faltas,
         'Mensalidade': 0,
         'Data_cadastro': dia,
-        'Id_categoria': await get_categoria(req.body.categoria)
+        'Id_categoria': await get_categoria(req.body.categoria.trim())
     }
     const dadosBanco = await get_alunos()
     const categorias = await retorna_categorias()

@@ -67,6 +67,9 @@ form label {
 form input[type=date]{
     margin-bottom: 5%;
 }
+select{
+    width: 50%;
+}
 form input[type="checkbox"]{
     width: 20px;
     height: 20px;

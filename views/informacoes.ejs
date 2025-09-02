@@ -12,55 +12,64 @@
 </head>
 
 <body>
-    <div class="title">
-        <nav class="subtitle">
-            <a href="/logout" class="btn btn-link">Logoff</a>
-            <% if (administrador) { %>
-                <a class="btn btn-link" href="/telaAjustes">Configurações</a>
-                <a href="/cadastro" class="btn btn-link">Cadastrar aluno</a>
-                <a href="/editarAluno" class="btn btn-link">Editar aluno</a>
-                <a class="btn btn-link" href="/Presenca">Registrar presença</a>
-                <a class="btn btn-link" href="/mensalidade">Pagar mensalidade</a>
-            <% } %>
-                <a class="btn btn-link" href="/HistoricoPresenca">Histórico de presença</a>
-                <a class="btn btn-link" href="/HistoricoPagamento">Histórico de pagamento</a>
-        </nav>
-    </div>
+    <header>
+        <div class="title">
+            <nav class="subtitle">
+                <a href="/logout" class="btn btn-link">Logoff</a>
+                <% if (administrador) { %>
+                    <a class="btn btn-link" href="/telaAjustes">Configurações</a>
+                    <a href="/cadastro" class="btn btn-link">Cadastrar aluno</a>
+                    <a href="/editarAluno" class="btn btn-link">Editar aluno</a>
+                    <a class="btn btn-link" href="/Presenca">Registrar presença</a>
+                    <a class="btn btn-link" href="/mensalidade">Pagar mensalidade</a>
+                <% } %>
+                    <a class="btn btn-link" href="/HistoricoPresenca">Histórico de presença</a>
+                    <a class="btn btn-link" href="/HistoricoPagamento">Histórico de pagamento</a>
+
+            </nav>
+        </div>
+    </header>
     <h1>Informações dos alunos</h1>
-    <input type="text" id="pesquisa" placeholder="Filtrar por nome do aluno" />
-    <table class="table" id="table" class="table table-striped table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>RG</th>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Responsável</th>
-                <th>Telefone responsável</th>
-                <th>Data de nascimento</th>
-                <th>Frequência(%)</th>
-                <th>Faltas</th>
-                <th>Mensalidade</th>
-                <th>Data de cadastro</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <% data.forEach(item => { %>
-            <tr>
-                <td><%= item.elementos.rg_aluno %></td>
-                <td><%= item.elementos.nome %></td>
-                 <td><%= item.categorias.nome_categoria %></td>
-                <td><%= item.responsaveis.nome %></td>
-                <td><%= item.responsaveis.telefone %></td>
-                <td><%= item.elementos.data_nascimento.toLocaleDateString('pt-br') %></td>
-                <td><%= item.elementos.frequencia %></td>
-                <td><%= item.elementos.faltas %></td>
-                <td td class="status"><%= item.elementos.mensalidade %></td>
-                <td><%= item.elementos.data_cadastro.toLocaleDateString('pt-br',{hour:"2-digit",minute:"2-digit",second:"2-digit"}).replace(","," às") %></td>
-            </tr>
-            <% }); %>
-            </tr>
-        </tbody>
-    </table>
+    <main>
+        <section class="informacoesAluno">
+            <input type="text" id="pesquisa" placeholder="Filtrar por nome do aluno" />
+            <div class="table-container">
+                <table class="table" id="table" class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>RG</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Responsável</th>
+                            <th>Telefone responsável</th>
+                            <th>Data de nascimento</th>
+                            <th>Frequência(%)</th>
+                            <th>Faltas</th>
+                            <th>Mensalidade</th>
+                            <th>Data de cadastro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <% data.forEach(item => { %>
+                        <tr>
+                            <td><%= item.elementos.rg_aluno %></td>
+                            <td><%= item.elementos.nome %></td>
+                            <td><%= item.categorias.nome_categoria %></td>
+                            <td><%= item.responsaveis.nome %></td>
+                            <td><%= item.responsaveis.telefone %></td>
+                            <td><%= item.elementos.data_nascimento.toLocaleDateString('pt-br') %></td>
+                            <td><%= item.elementos.frequencia %></td>
+                            <td><%= item.elementos.faltas %></td>
+                            <td td class="status"><%= item.elementos.mensalidade %></td>
+                            <td><%= item.elementos.data_cadastro.toLocaleDateString('pt-br',{hour:"2-digit",minute:"2-digit",second:"2-digit"}).replace(","," às") %></td>
+                        </tr>
+                        <% }); %>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

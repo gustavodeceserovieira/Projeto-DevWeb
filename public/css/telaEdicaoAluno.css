@@ -45,7 +45,7 @@ body {
 
 .form {
     padding: 1.5rem;
-    max-width: 600px;
+    max-width: 95%;
     max-height: 70vh;
     margin: 3rem auto;
     background: #ffffff;
@@ -86,10 +86,7 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-#info{
-    margin-top: 4%;
-    font-size: small;
-}
+
 @media (max-width: 768px) {
     h1 {
         text-align: center;

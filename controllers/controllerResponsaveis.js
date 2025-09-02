@@ -2,8 +2,6 @@ import { get_alunos, get_alunos_rg, get_responsaveis_rg } from "../models/select
 import { atualiza_dados_responsaveis } from "../models/update.js"
 
 
-
-
 export async function telaResponsaveis(req,res) {
     const alunos_dados = await get_alunos()
     let responsaveis = []
@@ -21,9 +19,9 @@ export async function telaResponsaveis(req,res) {
 
 export async function editaResponsavel(req,res) {
     const dados = {
-        'Rg':req.body.rg.split("  ")[0],
-        'Nome': req.body.nome_atualizado,
-        'Tel':req.body.tel,
+        'Rg':req.body.rg.split("  ")[0].trim(),
+        'Nome': req.body.nome_atualizado.trim(),
+        'Tel':req.body.tel.trim(),
     }
     const alunosPorRg = await get_alunos_rg(dados['Rg'])
     for (const alunos of alunosPorRg) {

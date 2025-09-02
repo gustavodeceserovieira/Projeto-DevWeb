@@ -13,45 +13,54 @@
 </head>
 
 <body onload="atualiza_campos()">
-    <div class="title">
-        <nav class="subtitle">
-            <a href="/logout" class="btn btn-link">Logoff</a>
-            <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
-        </nav>
-    </div>
+    <header>
+        <div class="title">
+            <nav class="subtitle">
+                <a href="/logout" class="btn btn-link">Logoff</a>
+                <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
+            </nav>
+        </div>
+    </header>
     <h1>Edição do Responsável</h1>
-    <div class="form">
-        <form action="/editaResponsavel" id="form" method="post" class="form-group" style="display:block">
-            <label>Aluno</label>
-            <select name="rg" id="selectAluno">
-                <% data.forEach(item => { %>
-                    <option value="<%= item.alunos.rg_aluno %>" 
-                        nome="<%= item.responsaveisAlunos.nome %>" 
-                        telefone="<%= item.responsaveisAlunos.telefone %>"><%= item.alunos.rg_aluno + " " + item.alunos.nome %></option>
-                <% }); %>
-            </select><br>
-            <div id="atualiza" style="display: block;">
-                <label>Nome do responsável*</label>
-                <input type="text" name="nome_atualizado" id="nome_atualizado" class="form-control" placeholder="Nome atualizado"
-                    maxlength="100" autocomplete="off"><br>
-                <label>Telefone*</label>
-                <input type="tel" name="tel" id="telefone" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" class="form-control" placeholder="(xx) xxxxx-xxxx"
-                 autocomplete="off" minlength="0" maxlength="15"><br>
+    <main>
+        <section class="formulario-editaResponsavel">
+            <div class="form">
+                <form action="/editaResponsavel" id="form" method="post" class="form-group" style="display:block">
+                    <label>Aluno</label>
+                    <select name="rg" id="selectAluno">
+                        <% data.forEach(item=> { %>
+                            <option value="<%= item.alunos.rg_aluno %>" nome="<%= item.responsaveisAlunos.nome %>"
+                                telefone="<%= item.responsaveisAlunos.telefone %>">
+                                <%= item.alunos.rg_aluno + " " + item.alunos.nome %>
+                            </option>
+                            <% }); %>
+                    </select><br>
+                    <div id="atualiza" style="display: block;">
+                        <label>Nome do responsável*</label>
+                        <input type="text" name="nome_atualizado" id="nome_atualizado" class="form-control"
+                            placeholder="Nome atualizado" maxlength="100" autocomplete="off"><br>
+                        <label>Telefone*</label>
+                        <input type="tel" name="tel" id="telefone"
+                            pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" class="form-control"
+                            placeholder="(xx) xxxxx-xxxx" autocomplete="off" minlength="0" maxlength="15"><br>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
-            <p id="info">Campos com asterisco são obrigatórios</p>
-        </form>
-    </div>
+        </section>
+    </main>
+
 </body>
 <script>
     IMask(
-    document.getElementById('telefone'),
-    {
-        mask: '(00)00000-0000'
-    },
-    IMask(
-    document.getElementById('nome_atualizado'),{
-        mask: /^[\p{L} '-]*$/u 
-    }))
+        document.getElementById('telefone'),
+        {
+            mask: '(00)00000-0000'
+        },
+        IMask(
+            document.getElementById('nome_atualizado'), {
+            mask: /^[\p{L} '-]*$/u
+        }))
 </script>
+
 </html>

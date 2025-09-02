@@ -12,34 +12,43 @@
 </head>
 
 <body>
-    <div class="title">
-        <nav class="subtitle">
-            <a href="/logout" class="btn btn-link">Logoff</a>
-            <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
-        </nav>
-    </div>
-    <h1>Mensalidade</h1>
-    <div class="form">
-        <form method="post" action="/editaMensalidade" class="form-group" id="form" style="display: block;">
-            <label>Aluno</label>
-            <select name="rg" id="select">
-                 <% data.forEach(function(aluno) { %>
-                    <option ><%= aluno.rg_aluno + " " + aluno.nome %></option>
-                <% }); %>
-            </select><br>
-            <label>Mensalidade</label>
-            <input type="checkbox" name="on" id="checkbox"/><br>
-            <div id="pagamento" style="display: none;">
-                <label>Data do pagamento</label>
-                <input type="date" name="data_pagamento" id="data_pagamento" min=""/><br>
+    <header>
+        <div class="title">
+            <nav class="subtitle">
+                <a href="/logout" class="btn btn-link">Logoff</a>
+                <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Mensalidade</h1>
+        <section clas="editaMensalidade">
+            <div class="form">
+                <form method="post" action="/editaMensalidade" class="form-group" id="form" style="display: block;">
+                    <label>Aluno</label>
+                    <select name="rg" id="select">
+                        <% data.forEach(function(aluno) { %>
+                            <option>
+                                <%= aluno.rg_aluno + " " + aluno.nome %>
+                            </option>
+                            <% }); %>
+                    </select><br>
+                    <label>Mensalidade</label>
+                    <input type="checkbox" name="on" id="checkbox" /><br>
+                    <div id="pagamento" style="display: none;">
+                        <label>Data do pagamento</label>
+                        <input type="date" name="data_pagamento" id="data_pagamento" min="2025-01-01" max="" required /><br>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
-        </form>
-    </div>
+        </section>
+    </main>
 </body>
 <script>
     const dataAtual = new Date().toISOString().split("T")[0];
     const input = document.getElementById("data_pagamento");
-    input.setAttribute("max",dataAtual)
+    input.setAttribute("max", dataAtual)
 </script>
+
 </html>

@@ -8,7 +8,7 @@ export async function atualiza_dados(dados,rg){
 }
 export async function zera_faltas(){
   const query = await db.execute('SET SQL_SAFE_UPDATES=0')
-  const row = await db.execute('UPDATE aluno SET faltas=0, frequencia=0 WHERE rg_aluno IS NOT NULL')
+  const row = await db.execute('UPDATE aluno SET faltas=0, frequencia=100 WHERE rg_aluno IS NOT NULL')
   const query1 = await db.execute('SET SQL_SAFE_UPDATES=1')
   return row
 }
@@ -39,7 +39,11 @@ export async function atualiza_presenca(dados){
   const[rows] = await db.execute('UPDATE aluno SET frequencia=?, faltas=? WHERE rg_aluno=?',[dados['Frequencia'],dados['Faltas'],dados['Rg']])
   return rows
 }
-export async function atualiza_historico(nome,rg_antigo){
+export async function atualiza_historico_pagamento(nome,rg_antigo){
   const[rows] = await db.execute('UPDATE historico_pagamento SET nome_aluno=? WHERE rg_aluno=?',[nome,rg_antigo])
+  return rows
+}
+export async function atualiza_historico_presenca(nome,rg_antigo){
+  const[rows] = await db.execute('UPDATE presenca SET nome=? WHERE rg_aluno=?',[nome,rg_antigo])
   return rows
 }

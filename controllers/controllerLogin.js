@@ -15,10 +15,10 @@ export async function fazlogin(req,res) {
     virouMes()
     //Quando faz login cria a sessão
     req.session.sessionId = Math.random().toString(36).substring(2,15);//Cria um id aleatório para a sessão
-    req.session.nome = req.body.nome;
+    req.session.nome = req.body.nome.trim();
     const dadosUsuario = {
-        'usuario':req.body.nome,
-        'senha': req.body.password
+        'usuario':req.body.nome.trim(),
+        'senha': req.body.password.trim()
     }
     const dadosUsuariobanco = await login();
     const ajustes = await get_ajustes();

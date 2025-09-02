@@ -25,7 +25,7 @@ for (let i = 0; i < tbodyLinhas; i++) {
         const filter = this.value.toLowerCase();
         const rows = document.querySelectorAll('#table tbody tr');
         rows.forEach(row => {
-            const cell = row.cells[1]; //filtra por categoria
+            const cell = row.cells[1]; //filtra por nome
             const cellText = cell ? cell.textContent.toLowerCase() : '';
             row.style.display = cellText.includes(filter) ? '' : 'none';
         });

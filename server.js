@@ -19,12 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: process.env.KEY,  
-    resave: false,                  
-    saveUninitialized: true,      
-    cookie: { maxAge: 300000 }  //Tempo de sessão de 5 minutos
-    
-    
+  secret: process.env.KEY,  
+  resave: false,                  
+  saveUninitialized: true,      
+  cookie: { maxAge: 900000 }  //Tempo de sessão de 5 minutos 
 }));
 
 app.use((req, res, next) => {
@@ -34,9 +32,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-        
-
-
 app.use(routesAjustes)
 app.use(routesAlunos)
 app.use(routesHistorico)

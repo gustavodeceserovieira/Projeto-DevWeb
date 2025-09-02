@@ -13,48 +13,61 @@
 </head>
 
 <body onload="atualiza_campos()">
-    <div class="title">
-        <nav class="subtitle">
-            <a href="/logout" class="btn btn-link">Logoff</a>
-            <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
-            <a class="btn btn-link" href="/EditarResponsavel">Editar responsável</a>
-        </nav>
-    </div>
-    <h1>Edição do aluno</h1>
-    <div class="form">
-        <form action="/editaAluno" method="post" class="form-group" id="form" style="display: block;">
-            <label>Aluno</label>
-            <select name="rg" id="selectAluno">
-                <% data.forEach(item => { %>
-                    <option value="<%= item.alunos.rg_aluno %>" 
-                        data-nome="<%= item.alunos.nome %>" 
-                        data-data="<%= item.alunos.data_nascimento.toLocaleDateString('pt-br') %>"><%= item.alunos.rg_aluno + " - " + item.alunos.nome + " - " + item.categoriasAlunos.nome_categoria %></option>
-                    <% }); %>
-            </select><br>
-            <div id="atualiza" style="display: block;">
-                <label>Novo nome*</label>
-                <input type="text" name="nome_atualizado" id="nome_atualizado" class="form-control"
-                    maxlength="100" autocomplete="off"><br>
-                <label>Selecione a nova categoria</label>
-                <select name="categoria" id="selectAluno">
-                    <% data1.forEach(function(categoria) { %>
-                        <option><%= categoria.nome_categoria %></option>
-                    <% }); %>
-                </select><br>
-                <label>Data de nascimento*</label>
-                <input type="date" min="2012-01-01" e max="2018-12-31" name="data" id="data_nascimento" class="form-control"/><br>
+    <header>
+        <div class="title">
+            <nav class="subtitle">
+                <a href="/logout" class="btn btn-link">Logoff</a>
+                <a href="/mostraInformacoes" class="btn btn-link">Informações dos alunos</a>
+                <a class="btn btn-link" href="/EditarResponsavel">Editar responsável</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Edição do aluno</h1>
+        <section class="formulario-editaAluno">
+            <div class="form">
+                <form action="/editaAluno" method="post" class="form-group" id="form" style="display: block;">
+                    <label>Aluno</label>
+                    <select name="rg" id="selectAluno">
+                        <% data.forEach(item=> { %>
+                            <option value="<%= item.alunos.rg_aluno %>" data-nome="<%= item.alunos.nome %>"
+                                data-data="<%= item.alunos.data_nascimento.toLocaleDateString('pt-br') %>">
+                                <%= item.alunos.rg_aluno + " - " + item.alunos.nome + " - " +
+                                    item.categoriasAlunos.nome_categoria %>
+                            </option>
+                            <% }); %>
+                    </select><br><br>
+                    <div id="atualiza" style="display: block;">
+                        <label>Novo nome*</label>
+                        <input type="text" name="nome_atualizado" id="nome_atualizado" class="form-control"
+                            maxlength="100" autocomplete="off"><br>
+                        <label>Selecione a nova categoria</label>
+                        <select name="categoria" id="selectCategoria">
+                            <% data1.forEach(function(categoria) { %>
+                                <option>
+                                    <%= categoria.nome_categoria %>
+                                </option>
+                                <% }); %>
+                        </select><br>
+                        <label>Data de nascimento*</label>
+                        <input type="date" min="2012-01-01" e max="2018-12-31" name="data" id="data_nascimento"
+                            class="form-control" /><br>
+                    </div>
+                    <label>Deletar aluno</label>
+                    <input type="checkbox" name="on" id="deletar" /><br>
+                    <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                </form>
             </div>
-            <label>Deletar aluno</label>
-            <input type="checkbox" name="on" id="deletar"/><br>
-            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
-            <p id="info">Campos com asterisco são obrigatórios</p>
-        </form>
-    </div>
+        </section>
+    </main>
+
 </body>
 <script>
     IMask(
-    document.getElementById('nome_atualizado'),{
-        mask: /^[\p{L} '-]*$/u 
-    })
+        document.getElementById('nome_atualizado'), {
+        mask: /^[\p{L} '-]*$/u
+    });
 </script>
+
 </html>

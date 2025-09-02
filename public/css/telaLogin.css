@@ -6,7 +6,7 @@ body {
 
 .form{
     padding: 3rem;
-    max-width: 600px;
+    max-width: 65%;
     max-height: 90%;
     margin: 3rem auto;
     background: #ffffff;
@@ -58,10 +58,7 @@ h1 {
     color: red;
 }
 
-#info{
-    color:black;
-    font-size: small;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight:bold;
-    margin-top: 5%;
+.footer{
+    text-align: center;
+    width: 95%;
 }

@@ -12,25 +12,33 @@
 </head>
 
 <body>
-    <h1>Criar usuário</h1>
-    <div class="form">
-        <form method="post" action="/cria_usuario" class="form-group">
-            <label>Nome de usuário*</label>
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Usuário" maxlength="100"
-                autocomplete="off" required="true">
-            <label>Senha*</label>
-            <input type="password" name="password" class="form-control" placeholder="Digite uma senha de 4 a 6 caracteres"
-                minlength="4" maxlength="6" autocomplete="off" required="true"><br>
-            <p id="erro"><%= msg %></p>
-            <button type="submit" class="btn btn-primary mt-3">Criar usuário</button>
-            <p id="info">Campos com asterisco são obrigatórios</p>
-        </form>
-    </div>
+    <main>
+        <h1>Criar usuário</h1>
+        <section class="formulario-criaUsuario">
+            <div class="form">
+                <form method="post" action="/cria_usuario" class="form-group">
+                    <label>Nome de usuário*</label>
+                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Usuário" maxlength="100"
+                        autocomplete="off" required="true">
+                    <label>Senha*</label>
+                    <input type="password" name="password" class="form-control"
+                        placeholder="Digite uma senha de 4 a 6 caracteres" minlength="4" maxlength="6"
+                        autocomplete="off" required="true">
+                    <p id="erro">
+                        <%= msg %>
+                    </p>
+                    <button type="submit" class="btn btn-primary mt-3">Criar usuário</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
 </body>
 <script>
     IMask(
-    document.getElementById('nome'),{
-        mask: /^[\p{L} '-]*$/u 
-  })
+        document.getElementById('nome'), {
+        mask: /^[\p{L} '-]*$/u
+    })
 </script>
+
 </html>

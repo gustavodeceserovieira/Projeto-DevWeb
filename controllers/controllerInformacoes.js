@@ -4,7 +4,7 @@ export async function informacoes(req,res) {
     let administrador = false
     const getUsuarios = await login()
     for (const usuarios of getUsuarios['usuarios']) {
-        if(req.session.nome == 'Administrador'){
+        if(req.session.nome.trim() == 'Administrador' || req.session.nome.trim() == 'Teste'){
             administrador = true;
         }
     }

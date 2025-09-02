@@ -1,4 +1,4 @@
-import get_ajustes, { get_alunos, get_alunos_rg, retorna_categorias ,retorna_presenca } from '../models/select.js'
+import get_ajustes, {get_alunos_rg, retorna_categorias ,retorna_presenca } from '../models/select.js'
 import {retorna_alunos_por_categoria } from '../models/select.js'
 import { insere_presenca } from '../models/insert.js';
 import { atualiza_presenca } from '../models/update.js';
@@ -10,8 +10,8 @@ export async function registraPresenca(req,res){
   for (const key in req.body.presenca) {
     presencas[key] = req.body.presenca[key];
   }
-  const data_presenca = req.body.data_presenca
-  const alunosCategoria = await retorna_alunos_por_categoria(req.body.categorias)
+  const data_presenca = req.body.data_presenca.trim()
+  const alunosCategoria = await retorna_alunos_por_categoria(req.body.categorias.trim())
   for (const alunos of alunosCategoria) {
     const presente = alunos['rg_aluno'] in presencas
     const dados = {

@@ -1,6 +1,6 @@
 import { get_alunos,get_alunos_rg, get_categoria, retorna_alunos_por_categoria, retorna_categorias, retorna_categorias_dos_alunos } from '../models/select.js'
 import {deleta_aluno,deleta_presenca_aluno,deleta_responsaveis_aluno,deleta_aluno_historico} from '../models/delete.js'
-import { atualiza_dados, atualiza_historico } from '../models/update.js';
+import { atualiza_dados, atualiza_historico_pagamento, atualiza_historico_presenca } from '../models/update.js';
 
 
 export async function telaEditaAluno(req,res) {
@@ -27,13 +27,14 @@ export async function editaAluno(req,res) {
         return res.redirect('mostraInformacoes')
       }else{
         const dados = {
-            'Nome': req.body.nome_atualizado,
-            'Data_nascimento':req.body.data,
-            'Id_categoria':await get_categoria(req.body.categoria)
+            'Nome': req.body.nome_atualizado.trim(),
+            'Data_nascimento':req.body.data.trim(),
+            'Id_categoria':await get_categoria(req.body.categoria.trim())
         }
         await atualiza_dados(dados,rgAntigo)
         for (const alunos of alunosRg) {
-            await atualiza_historico(dados['Nome'],alunos['rg_aluno'])
+            await atualiza_historico_pagamento(dados['Nome'],alunos['rg_aluno'])
+            await atualiza_historico_presenca(dados['Nome'],alunos['rg_aluno'])
         }
         return res.redirect('mostraInformacoes')
     }
