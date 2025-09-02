@@ -1,12 +1,17 @@
-import { get_alunos,get_alunos_rg, get_categoria, retorna_alunos_por_categoria, retorna_categorias } from '../models/select.js'
+import { get_alunos,get_alunos_rg, get_categoria, retorna_alunos_por_categoria, retorna_categorias, retorna_categorias_dos_alunos } from '../models/select.js'
 import {deleta_aluno,deleta_presenca_aluno,deleta_responsaveis_aluno,deleta_aluno_historico} from '../models/delete.js'
 import { atualiza_dados, atualiza_historico } from '../models/update.js';
 
 
 export async function telaEditaAluno(req,res) {
-  const alunos = await get_alunos()
-  const categorias = await retorna_categorias()
-  return res.render('editaAluno',{data:alunos,data1:categorias})
+    const alunos = await get_alunos()
+    const categoriasAlunos = await retorna_categorias_dos_alunos()
+    const categorias = await retorna_categorias()
+    const map = alunos.map((aluno,i) => ({
+        alunos:aluno,
+        categoriasAlunos: categoriasAlunos[i],
+    }));
+  return res.render('editaAluno',{data:map,data1:categorias})
 }
 
 export async function editaAluno(req,res) {

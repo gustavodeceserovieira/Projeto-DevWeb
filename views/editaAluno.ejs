@@ -8,6 +8,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/telaEdicaoAluno.css">
     <script src="/js/editaAluno.js" defer></script>
+    <script src="https://unpkg.com/imask"></script>
     <title>Editar aluno</title>
 </head>
 
@@ -24,11 +25,11 @@
         <form action="/editaAluno" method="post" class="form-group" id="form" style="display: block;">
             <label>Aluno</label>
             <select name="rg" id="selectAluno">
-                <% data.forEach(function(aluno) { %>
-                    <option value="<%= aluno.rg_aluno %>" 
-                        data-nome="<%= aluno.nome %>" 
-                        data-data="<%= aluno.data_nascimento.toLocaleDateString('pt-br') %>"><%= aluno.rg_aluno + " " + aluno.nome %></option>
-                <% }); %>
+                <% data.forEach(item => { %>
+                    <option value="<%= item.alunos.rg_aluno %>" 
+                        data-nome="<%= item.alunos.nome %>" 
+                        data-data="<%= item.alunos.data_nascimento.toLocaleDateString('pt-br') %>"><%= item.alunos.rg_aluno + " - " + item.alunos.nome + " - " + item.categoriasAlunos.nome_categoria %></option>
+                    <% }); %>
             </select><br>
             <div id="atualiza" style="display: block;">
                 <label>Novo nome*</label>
@@ -41,7 +42,7 @@
                     <% }); %>
                 </select><br>
                 <label>Data de nascimento*</label>
-                <input type="date" max="9999-12-31" name="data" id="data_nascimento" class="form-control"/><br>
+                <input type="date" min="2012-01-01" e max="2018-12-31" name="data" id="data_nascimento" class="form-control"/><br>
             </div>
             <label>Deletar aluno</label>
             <input type="checkbox" name="on" id="deletar"/><br>
@@ -50,4 +51,10 @@
         </form>
     </div>
 </body>
+<script>
+    IMask(
+    document.getElementById('nome_atualizado'),{
+        mask: /^[\p{L} '-]*$/u 
+    })
+</script>
 </html>

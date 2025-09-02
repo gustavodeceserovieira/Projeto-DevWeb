@@ -10,9 +10,10 @@ export async function telaMensalidade(req,res) {
 export async function editaMensalidade(req,res) {
     const data = req.body.data_pagamento
     if(req.body.on){
+        const [rg, ...array] = req.body.rg.split(" ");
         const dados = {
-            'Rg': req.body.rg.split(" ")[0],
-            'Nome': req.body.rg.split(" ")[1],
+            'Rg': rg,
+            'Nome': array.join(" "),
             'Mensalidade': 1,
         }
         await atualiza_mensalidade(dados)

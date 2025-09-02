@@ -4,7 +4,7 @@ import validaData from '../functions/functions.js';
 
 export async function telaCadastro(req,res) {
     const categorias = await retorna_categorias()
-    return res.render('cadastro',{data:categorias,msg:""})
+    return res.render('cadastro',{data:categorias,msg:"",msg1:""})
 }
 
 
@@ -30,7 +30,7 @@ export async function cadastraAluno(req,res) {
     const categorias = await retorna_categorias()
     for (const alunos of dadosBanco) {
     if(alunos['rg_aluno'] == req.body.rg){
-        return res.render("cadastro",{msg:"Aluno já cadastrado",data:categorias})
+        return res.render("cadastro",{msg:"Aluno já cadastrado",data:categorias,msg1:""})
     }
     }
     await salva_dados_alunos(dados)

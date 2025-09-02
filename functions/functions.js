@@ -1,3 +1,5 @@
+
+import {retorna_categorias} from '../models/select.js'
 /*
 def virouMes():
     dia = time.strftime('%d', time.localtime())
@@ -29,15 +31,16 @@ export default async function validaData(req,res) {
         idade--;
     }
     if(categoria == "SUB 7" && !(idade >= 6 && idade <=7) ){
-        return res.render('cadastro',{data:categorias,msg:"Data inválida para a categoria SUB 7"})
+        return res.render('cadastro',{msg:"",data:categorias,msg1:"Data inválida para a categoria SUB 7"})
     }
     if(categoria == "SUB 9" && !(idade >= 8 && idade < 10)){
-        return res.render('cadastro',{data:categorias,msg:"Data inválida para a categoria SUB 9"})
+        return res.render('cadastro',{msg:"",data:categorias,msg1:"Data inválida para a categoria SUB 9"})
     }
     if(categoria == "SUB 11" && !(idade >= 10 && idade <=11)){
-        return res.render('cadastro',{data:categorias,msg:"Data inválida para a categoria SUB 11"})
+        return res.render('cadastro',{msg:"",data:categorias,msg1:"Data inválida para a categoria SUB 11"})
     }
     if(categoria == "SUB 13" && !(idade >= 12 && idade <=13)){
-        return res.render('cadastro',{data:categorias,msg:"Data inválida para a categoria SUB 13"})
+        return res.render('cadastro',{msg:"",data:categorias,msg1:"Data inválida para a categoria SUB 13"})
     }
+    //Ajustar as mensagens
 }

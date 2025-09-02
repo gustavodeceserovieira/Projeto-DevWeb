@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/telaAjustes.css">
+    <script src="https://unpkg.com/imask"></script>
     <title>Ajustes</title>
 </head>
 
@@ -22,11 +23,11 @@
     <div class="form">
         <form method="post" action="/ajustes" class="form-group" id="form">
             <label>Quantidade de aulas*</label>
-            <input type="number" name="qtdAulas" class="form-control" min="0" id="qtdAulas" value="<%= data.aulas %>" autocomplete="off" required="true"><br>
+            <input type="number" name="qtdAulas" class="form-control" min="0" max="30" id="qtdAulas" value="<%= data.aulas %>" autocomplete="off" required="true"><br>
             <label>Mensalidade*</label>
-            <input type="text" name="valorMensalidade" class="form-control" id="mensalidade" value="<%= data.mensalidade %>" autocomplete="off"required="true"><br>
+            <input type="text" name="valorMensalidade" class="form-control" min="0" id="mensalidade" value="<%= data.mensalidade %>" autocomplete="off"required="true"><br>
             <label>Dia para o fechamento do mês*</label>
-            <input type="number" min="1" max="31" name="pagamento" id="dia" value="<%= data.fechamento %>" class="form-control" autocomplete="off" required="true">
+            <input type="number" min="1" max="31" name="pagamento" id="dia" min="0" max="31" value="<%= data.fechamento %>" class="form-control" autocomplete="off" required="true">
             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
             <p id="info">Campos com asterisco são obrigatórios</p>
         </form>
@@ -39,5 +40,21 @@
     document.getElementById("mensalidade").value
     document.getElementById("dia").value
 });
+  IMask(
+    document.getElementById('qtdAulas'),
+  {
+    mask: Number,
+  },
+  IMask(
+    document.getElementById('mensalidade'),
+  {
+    mask: Number,
+  },
+  IMask(
+    document.getElementById('dia'),
+  {
+    mask: Number,
+  },
+  )));
 </script>
 </html>

@@ -8,6 +8,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/telaEdicaoAluno.css">
     <script src="/js/editaResponsavel.js" defer></script>
+    <script src="https://unpkg.com/imask"></script>
     <title>Editar aluno</title>
 </head>
 
@@ -42,4 +43,15 @@
         </form>
     </div>
 </body>
+<script>
+    IMask(
+    document.getElementById('telefone'),
+    {
+        mask: '(00)00000-0000'
+    },
+    IMask(
+    document.getElementById('nome_atualizado'),{
+        mask: /^[\p{L} '-]*$/u 
+    }))
+</script>
 </html>

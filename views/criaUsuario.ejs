@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/telaCriaUsuario.css">
+    <script src="https://unpkg.com/imask"></script>
     <title>Criar usuário</title>
 </head>
 
@@ -15,7 +16,7 @@
     <div class="form">
         <form method="post" action="/cria_usuario" class="form-group">
             <label>Nome de usuário*</label>
-            <input type="text" name="nome" class="form-control" placeholder="Usuário" maxlength="100"
+            <input type="text" name="nome" class="form-control" id="nome" placeholder="Usuário" maxlength="100"
                 autocomplete="off" required="true">
             <label>Senha*</label>
             <input type="password" name="password" class="form-control" placeholder="Digite uma senha de 4 a 6 caracteres"
@@ -26,5 +27,10 @@
         </form>
     </div>
 </body>
-
+<script>
+    IMask(
+    document.getElementById('nome'),{
+        mask: /^[\p{L} '-]*$/u 
+  })
+</script>
 </html>
