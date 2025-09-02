@@ -12,7 +12,7 @@ import routesPresenca from './routes/presenca.js'
 import routesMensalidade from './routes/mensalidade.js'
 import routesUsuario from './routes/usuarios.js'
 import session from 'express-session'
-import path from 'path'
+
 dotenv.config()
 const app = express();
 app.use(express.json());
