@@ -53,6 +53,6 @@ export async function TelaPresenca(req,res) {
 
 export async function historicoPresenca(req,res) {
   const alunos = await retorna_presenca()
-  return res.render('HistoricoPresenca',{data:alunos})
+  return res.render('historicoPresenca',{data:alunos})
   
 }
