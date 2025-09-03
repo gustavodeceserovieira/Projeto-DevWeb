@@ -22,7 +22,7 @@ app.use(session({
   secret: process.env.KEY,  
   resave: false,                  
   saveUninitialized: true,      
-  cookie: { maxAge: 900000 }  //Tempo de sessão de 5 minutos 
+  cookie: { maxAge: 300000 }  //Tempo de sessão de 5 minutos 
 }));
 
 app.use((req, res, next) => {

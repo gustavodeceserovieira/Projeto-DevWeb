@@ -1,5 +1,5 @@
-import db from '../bd/bd.js'
-
+import getConexao from '../bd/bd.js'
+const db = await getConexao()
 
 export async function atualiza_dados(dados,rg){
   const[rows] = await db.execute('UPDATE aluno SET nome=?, data_nascimento=?, id_categoria=? WHERE rg_aluno=?',

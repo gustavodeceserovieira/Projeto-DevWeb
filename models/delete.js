@@ -1,5 +1,5 @@
-import db from '../bd/bd.js'
-
+import getConexao from '../bd/bd.js'
+const db = await getConexao()
 export async function deleta_aluno_historico(rg_aluno){
   const[rows] = await db.execute('DELETE FROM historico_pagamento WHERE rg_aluno=?',[rg_aluno])
   return rows

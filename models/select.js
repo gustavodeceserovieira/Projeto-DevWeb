@@ -1,4 +1,5 @@
-import db from '../bd/bd.js'
+import getConexao from '../bd/bd.js'
+const db = await getConexao()
 
 export default async function get_ajustes() {
   const [row] = await db.execute('SELECT * FROM ajustes');
@@ -39,6 +40,8 @@ export async function get_responsaveis_rg(rg) {
   const [rows] = await db.execute('SELECT nome, telefone FROM responsaveis WHERE rg_aluno=? order by rg_aluno asc',[rg]);
   return rows[0]
 }
+
+
 export async function login(){
   const [rows] = await db.execute('SELECT * FROM usuario');
   return {
