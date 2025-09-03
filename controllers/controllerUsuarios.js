@@ -6,8 +6,8 @@ export async function telaCriaUsuario(req,res) {
 }
 export async function criaUsuario(req,res) {
     const dadosUsuario = {
-        'usuario':req.body.nome.trim(),
-        'senha':req.body.password.trim()
+        'usuario':req.body.nome,
+        'senha':req.body.password
     }
     const dadosUsuariobanco = await login()
     for (const element of dadosUsuariobanco['usuarios']) {

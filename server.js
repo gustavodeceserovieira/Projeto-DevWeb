@@ -26,7 +26,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-  const publicPaths = ['/','/login'];
+  const publicPaths = ['/','/login','/cria_usuario'];
   if (!req.session.nome && !publicPaths.includes(req.path) && !req.path.startsWith("/css") && !req.path.startsWith("/js")) {
     return res.redirect("/");
   }
