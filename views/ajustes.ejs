@@ -26,13 +26,13 @@
         <section class="formulario">
             <div class="form">
                 <form method="post" action="/ajustes" class="form-group" id="form">
-                    <label>Quantidade de aulas*</label>
+                    <label for="qtdAulas">Quantidade de aulas*</label>
                     <input type="number" name="qtdAulas" class="form-control" min="0" max="30" id="qtdAulas"
                         value="<%= data.aulas %>" autocomplete="off" required="true"><br>
-                    <label>Mensalidade*</label>
+                    <label for="mensalidade">Mensalidade*</label>
                     <input type="text" name="valorMensalidade" class="form-control" min="0" max="250" id="mensalidade"
                         value="<%= data.mensalidade %>" autocomplete="off" required="true"><br>
-                    <label>Dia para o fechamento do mês*</label>
+                    <label for="dia">Dia para o fechamento do mês*</label>
                     <input type="number" min="1" max="31" name="pagamento" id="dia" min="0" max="31"
                         value="<%= data.fechamento %>" class="form-control" autocomplete="off" required="true">
                     <button type="submit" class="btn btn-primary mt-3">Salvar</button>

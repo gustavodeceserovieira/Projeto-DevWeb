@@ -26,19 +26,19 @@
         <section class="formulario-cadastro">
             <div class="form">
                 <form method="post" action="/cadastraInformacoes" class="form-group" id="formulario">
-                    <label>Nome completo*</label>
+                    <label for="nome">Nome completo*</label>
                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome completo do aluno"
                         maxlength="100" autocomplete="off" required="true"><br>
-                    <label>RG*</label>
+                    <label for="rg">RG*</label>
                     <input type="text" name="rg" id="rg" class="form-control" placeholder="RG" minlength="11"
                         maxlength="11" autocomplete="off" required="true"><br>
-                    <label>Responsável*</label>
+                    <label for="resp">Responsável*</label>
                     <input type="text" name="resp" class="form-control" id="resp" placeholder="Nome do responsável"
                         maxlength="100" autocomplete="off" required="true"><br>
-                    <label>Telefone do Responsável*</label>
+                    <label for="telefone">Telefone do Responsável*</label>
                     <input type="tel" name="tel" id="telefone" class="form-control" placeholder="(xx) xxxxx-xxxx"
                         autocomplete="on" required="true" minlength="0" maxlength="15" /><br>
-                    <label>Selecione a categoria*</label>
+                    <label for="selectAluno">Selecione a categoria*</label>
                     <select name="categoria" id="selectAluno">
                         <% data.forEach(function(categoria) { %>
                             <option>
@@ -46,7 +46,7 @@
                             </option>
                             <% }); %>
                     </select><br>
-                    <label>Data de nascimento*</label>
+                    <label for="data">Data de nascimento*</label>
                     <input type="date" min="2012-01-01" e max="2018-12-31" name="data" id="data" class="form-control"
                         required="true" />
                     <p id="erro">

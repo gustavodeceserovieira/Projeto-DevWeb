@@ -25,9 +25,9 @@
         <section class="editaPresenca">
             <div class="form">
                 <form method="post" action="/editaPresenca" class="form-group">
-                    <label>Data da aula</label>
+                    <label for="data_presenca">Data da aula</label>
                     <input type="date" name="data_presenca" id="data_presenca" min="2025-01-01" max=""><br>
-                    <label>Categoria</label>
+                    <label for="categoria-select">Categoria</label>
                     <select name="categorias" id="categoria-select" required>
                         <option value="">Categoria</option>
                         <% data.forEach(function(categoria) { %>

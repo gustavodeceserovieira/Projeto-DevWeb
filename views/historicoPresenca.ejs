@@ -42,7 +42,7 @@
                                 <%= alunos.nome %>
                             </td>
                             <td>
-                                <%= alunos.data_presenca.toLocaleDateString('pt-br') %>
+                                <%= alunos.data_presenca.toLocaleDateString('pt-br',{ timeZone: "America/Sao_Paulo"}) %>
                             </td>
                         </tr>
                         <% }); %>

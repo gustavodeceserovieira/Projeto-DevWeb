@@ -28,7 +28,7 @@
         <section class="formulario-editaAluno">
             <div class="form">
                 <form action="/editaAluno" method="post" class="form-group" id="form" style="display: block;">
-                    <label>Aluno</label>
+                    <label for="selectAluno">Aluno</label>
                     <select name="rg" id="selectAluno">
                         <% data.forEach(item=> { %>
                             <option value="<%= item.alunos.rg_aluno %>" data-nome="<%= item.alunos.nome %>"
@@ -39,10 +39,10 @@
                             <% }); %>
                     </select><br><br>
                     <div id="atualiza" style="display: block;">
-                        <label>Novo nome*</label>
+                        <label for="nome_atualizado">Novo nome*</label>
                         <input type="text" name="nome_atualizado" id="nome_atualizado" class="form-control"
                             maxlength="100" autocomplete="off"><br>
-                        <label>Selecione a nova categoria</label>
+                        <label for="selectCategoria">Selecione a nova categoria</label>
                         <select name="categoria" id="selectCategoria">
                             <% data1.forEach(function(categoria) { %>
                                 <option>
@@ -50,11 +50,11 @@
                                 </option>
                                 <% }); %>
                         </select><br>
-                        <label>Data de nascimento*</label>
+                        <label for="data_nascimento">Data de nascimento*</label>
                         <input type="date" min="2012-01-01" e max="2018-12-31" name="data" id="data_nascimento"
                             class="form-control" /><br>
                     </div>
-                    <label>Deletar aluno</label>
+                    <label for="deletar">Deletar aluno</label>
                     <input type="checkbox" name="on" id="deletar" /><br>
                     <button type="submit" class="btn btn-primary mt-3">Salvar</button>
                 </form>

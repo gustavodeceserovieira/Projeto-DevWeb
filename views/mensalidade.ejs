@@ -25,7 +25,7 @@
         <section clas="editaMensalidade">
             <div class="form">
                 <form method="post" action="/editaMensalidade" class="form-group" id="form" style="display: block;">
-                    <label>Aluno</label>
+                    <label for="select">Aluno</label>
                     <select name="rg" id="select">
                         <% data.forEach(function(aluno) { %>
                             <option>
@@ -33,10 +33,10 @@
                             </option>
                             <% }); %>
                     </select><br>
-                    <label>Mensalidade</label>
-                    <input type="checkbox" name="on" id="checkbox" /><br>
+                    <label for="on">Mensalidade</label>
+                    <input type="checkbox" name="on" id="on" id="checkbox" /><br>
                     <div id="pagamento" style="display: none;">
-                        <label>Data do pagamento</label>
+                        <label for="data_pagamento">Data do pagamento</label>
                         <input type="date" name="data_pagamento" id="data_pagamento" min="2025-01-01" max="" required /><br>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Salvar</button>
