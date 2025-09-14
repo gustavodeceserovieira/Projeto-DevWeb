@@ -6,3 +6,4 @@ export async function logout(req,res) {
     });
 }
 }
+export default logout;

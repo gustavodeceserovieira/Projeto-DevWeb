@@ -32,3 +32,5 @@ export async function fazlogin(req,res) {
     } 
     return res.render('login',{msg:"Usuário ou senha inválidos"})
 }
+
+export default fazlogin;//Para funcionar o teste

@@ -26,6 +26,7 @@ export async function ajustes(req,res){
     return res.redirect("mostraInformacoes")
     }
 }
+
 export async function TelaAjustes(req,res){
     const ajustes = await get_ajustes()
     if(ajustes['qtd'] == 0){
